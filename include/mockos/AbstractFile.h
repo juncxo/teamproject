@@ -4,10 +4,10 @@
 
 class AbstractFile {
 public:
-    virtual void read();
-    virtual int write(std::vector<char>);
-    virtual int append(std::vector<char>);
-    virtual unsigned int getSize();
-    virtual std::string getName();
+    virtual void read() = 0;
+    virtual int write(std::vector<char>) = 0;
+    virtual int append(std::vector<char>) = 0;
+    virtual unsigned int getSize() = 0;
+    virtual std::string getName() = 0;
 private:
 };
