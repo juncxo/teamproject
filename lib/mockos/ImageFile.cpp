@@ -18,7 +18,9 @@ string ImageFile::getName () {
 }
 
 int ImageFile::write(vector <char> vc) {
-    imageSize = (imageContents[ImageFile::getSize() - 1] - 48);
+
+    int size = (vc[vc.size() - 1] - 48);
+    imageSize = size;
     if ((vc.size() - 1) != imageSize * imageSize) {
         imageContents.clear();
         imageSize = 0;
