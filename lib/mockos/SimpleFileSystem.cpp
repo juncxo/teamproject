@@ -21,7 +21,7 @@ int SimpleFileSystem::addFile(string a, AbstractFile* p){
 }
 
 
-int SimpleFileSystem::createFile(string f) {
+/*int SimpleFileSystem::createFile(string f) {
     if (maps.count(f) != 0) {
         //file with that name already exists
         return fileExists; //file exists
@@ -58,7 +58,7 @@ int SimpleFileSystem::createFile(string f) {
         return invalidExtension;
 
 
-}
+}*/
 
 
 AbstractFile* SimpleFileSystem::openFile(string of){

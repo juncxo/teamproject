@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 
-#include "mockos/TextFile.h"
 #include "mockos/ImageFile.h"
 #include "mockos/SimpleFileSystem.h"
 #include "mockos/SimpleFileFactory.h"
