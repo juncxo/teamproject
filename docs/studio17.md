@@ -10,4 +10,13 @@ random characters that are not 'X' or ' ' and it returned the correct error outp
 and it returned the correct error.
 
 
-3)
+3) An interface allows for abstraction: Defining methods and properties that a class needs to implement without  
+providing their specific implementations. We thus can have classes extending from the same interface 
+that behave and are implemented differently. Most notably, concrete classes requires an unnecessarily rigid 
+approach to coding. 
+
+4) To create objects of arbitrary file types, we would need to make the file extension customizable:
+We would need to add a member variable to map file extensions to file types, the create method would
+check the file extension of the string passed in and determine the corresponding file type using the map.
+If the file extension of the string passed in doesn't exist in the map, a new file type will be created 
+in that map. 
