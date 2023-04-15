@@ -10,7 +10,7 @@ public:
     virtual void read();
     virtual int write(std::vector<char>);
     virtual int append(std::vector<char>);
-protected:
+protected: //private?
     std::vector<char> contents;
     std::string name;
 private:

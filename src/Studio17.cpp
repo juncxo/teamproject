@@ -1,14 +1,30 @@
 #include "mockos/ImageFile.h"
+#include "mockos/TextFile.h"
+#include "mockos/SimpleFileSystem.h"
 #include <iostream>
 
 using namespace std;
 
 int main (int argc, char * argv[]) {
-    ImageFile* tf = new ImageFile("hello");
+    ImageFile* img = new ImageFile("hello.img");
     vector <char> vc = {'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3'};
+    img->write(vc);
+    //img->read();
+    /*cout << img->getName()<<endl;
+    cout << img->getSize()<<endl;*/
+    SimpleFileSystem sf;
+    TextFile* tf = new TextFile("Test.txt");
+    sf.addFile("Test.txt", tf);
+    sf.addFile("hello.img", img);
+    sf.createFile("Test1.txt");
+    sf.openFile("Test2.txt");
     tf->write(vc);
     tf->read();
-    cout << tf->getName()<<endl;
-    cout << tf->getSize()<<endl;
+
+    sf.closeFile(tf);
+    sf.deleteFile("Test1.txt");
+    sf.deleteFile("Test.txt");
+    img->read();
+
     return 0;
 }

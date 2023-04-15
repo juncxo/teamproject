@@ -9,7 +9,7 @@ ImageFile :: ImageFile (string initializeName) {
 }
 
 unsigned int ImageFile::getSize() {
-    return imageSize;
+    return imageSize*imageSize;
 }
 
 

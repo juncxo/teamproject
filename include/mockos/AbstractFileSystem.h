@@ -2,7 +2,7 @@
 #include <string>
 #include "AbstractFile.h"
 
-class AbstractFileSystem : public AbstractFile{
+class AbstractFileSystem {
 public:
     virtual int addFile(std::string, AbstractFile*) = 0;
     virtual int createFile(std::string) = 0;
