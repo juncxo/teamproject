@@ -3,6 +3,7 @@
 #include <string>
 #include "AbstractFile.h"
 
+
 enum imageReturns {imageSuccess, sizeMismatchError, incorrectPixelError, appendNotSupportedError};
 
 class ImageFile : public AbstractFile {
@@ -13,6 +14,7 @@ public:
     virtual std::vector<char> read();
     virtual int write(std::vector<char>);
     virtual int append(std::vector<char>);
+    virtual void accept(AbstractFileVisitor*);
 protected:
 
 private:

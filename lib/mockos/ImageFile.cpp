@@ -1,5 +1,6 @@
 #include <vector>
 #include "mockos/ImageFile.h"
+#include "mockos/AbstractFileVisitor.h"
 #include <iostream>
 using namespace std;
 
@@ -57,6 +58,10 @@ vector<char> ImageFile::read () {
     }
     cout << endl;
     */
+    return imageContents;
 }
 
+void ImageFile::accept(AbstractFileVisitor* afv){
+    afv->visit_ImageFile(this);
+}
 

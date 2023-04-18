@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "AbstractFile.h"
+class AbstractFile;
+
 class AbstractFileFactory{
 public:
     virtual AbstractFile* createFile(std::string) = 0;

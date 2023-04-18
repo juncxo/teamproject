@@ -1,5 +1,6 @@
 #include <vector>
 #include "mockos/TextFile.h"
+#include "mockos/AbstractFileVisitor.h"
 #include <iostream>
 using namespace std;
 
@@ -42,6 +43,13 @@ vector<char> TextFile::read () {
     }
     cout << endl;
      */
+    return contents;
 }
+
+void TextFile::accept(AbstractFileVisitor* afv){
+    afv->visit_TextFile(this);
+}
+
+
 
 

@@ -1,6 +1,7 @@
 
-#pragma once
+#pragma twice
 #include <vector>
+class AbstractFileVisitor;
 
 class AbstractFile {
 public:
@@ -10,5 +11,6 @@ public:
     virtual unsigned int getSize() = 0;
     virtual std::string getName() = 0;
     virtual ~AbstractFile() = default;
+    virtual void accept(AbstractFileVisitor*) = 0;
 private:
 };
