@@ -20,8 +20,8 @@ int SimpleFileSystem::addFile(string a, AbstractFile* p){
     return SFSSuccess;
 }
 
-
-/*int SimpleFileSystem::createFile(string f) {
+/* Comment out for studio 18
+int SimpleFileSystem::createFile(string f) {
     if (maps.count(f) != 0) {
         //file with that name already exists
         return fileExists; //file exists
@@ -32,7 +32,7 @@ int SimpleFileSystem::addFile(string a, AbstractFile* p){
             dotIndex = i;
         }
     }
-    string extension = f.erase(0, dotIndex+1);
+    string extension = f.substr(dotIndex + 1, dotIndex+3);        //studio 17 error came from here
     //string truncatedName = f.erase(dotIndex, f.length() - dotIndex - 1);
     pair <string, AbstractFile*> filePair;
 
@@ -54,12 +54,9 @@ int SimpleFileSystem::addFile(string a, AbstractFile* p){
 
         return SFSSuccess;
     }
-
-        return invalidExtension;
-
-
-}*/
-
+    return invalidExtension;
+}
+*/
 
 AbstractFile* SimpleFileSystem::openFile(string of){
     if (maps.count(of) != 0) {
