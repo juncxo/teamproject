@@ -42,7 +42,9 @@ int ImageFile::append(vector <char> vc) {
    return appendNotSupportedError;
 }
 
-void ImageFile::read () {
+
+vector<char> ImageFile::read () {
+    /*
     for (int y = imageSize - 1; y >= 0; y--) {
         for (int x = 0; x < imageSize; x++) {
             std::cout << imageContents[y * imageSize + x];
@@ -53,7 +55,8 @@ void ImageFile::read () {
     /*for (int i = 0; i < contents.size(); i++) {
         cout << contents[i];
     }
-    cout << endl;*/
+    cout << endl;
+    */
 }
 
 

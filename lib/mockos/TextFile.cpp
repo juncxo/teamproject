@@ -35,11 +35,13 @@ int TextFile::append(vector <char> vc) {
     return 0;
 }
 
-void TextFile::read () {
+vector<char> TextFile::read () {
+    /*
     for (int i = 0; i < contents.size(); i++) {
         cout << contents[i];
     }
     cout << endl;
+     */
 }
 
 

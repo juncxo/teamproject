@@ -10,7 +10,7 @@ public:
     ImageFile(std::string);
     virtual std::string getName();
     virtual unsigned int getSize();
-    virtual void read();
+    virtual std::vector<char> read();
     virtual int write(std::vector<char>);
     virtual int append(std::vector<char>);
 protected:
