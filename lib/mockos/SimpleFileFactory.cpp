@@ -1,4 +1,7 @@
 #include "mockos/SimpleFileFactory.h"
+#include "mockos/TextFile.h"
+#include "mockos/ImageFile.h"
+
 
 using namespace std;
 

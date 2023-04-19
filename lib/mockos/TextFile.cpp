@@ -1,6 +1,5 @@
 #include <vector>
 #include "mockos/TextFile.h"
-#include "mockos/AbstractFileVisitor.h"
 #include <iostream>
 using namespace std;
 

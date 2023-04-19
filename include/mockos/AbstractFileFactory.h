@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
-class AbstractFile;
+//class AbstractFile;
+#include "AbstractFile.h"
+
 
 class AbstractFileFactory{
 public:

@@ -1,15 +1,17 @@
 #include "mockos/BasicDisplayVisitor.h"
-#include <cmath>>
+#include <cmath>
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
 void BasicDisplayVisitor::visit_ImageFile(ImageFile * image) {
-    int imageSize = sqrt(image->getSize());
+    int imageSize = image->getSize();
+    cout << image->getSize() <<endl;
     for (int y = imageSize - 1; y >= 0; y--) {
+        cout <<"image test2" <<endl;
         for (int x = 0; x < imageSize; x++) {
-            std::cout << image->read()[y * imageSize + x];
+           cout << image->read()[y * imageSize + x];
         }
         cout << endl;
     }
