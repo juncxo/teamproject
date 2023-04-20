@@ -6,13 +6,15 @@
 using namespace std;
 
 void BasicDisplayVisitor::visit_ImageFile(ImageFile * image) {
-    int imageSize = image->getSize();
-    cout << image->getSize() <<endl;
+    int imageSize = sqrt(image->getSize());
+    vector<char> imgContent = image->read();
     for (int y = imageSize - 1; y >= 0; y--) {
-        cout <<"image test2" <<endl;
         for (int x = 0; x < imageSize; x++) {
-           cout << image->read()[y * imageSize + x];
+
+           cout << imgContent[y * imageSize + x];
+
         }
+        //cout << "test4" << endl;
         cout << endl;
     }
     cout << endl;

@@ -2,6 +2,7 @@
 #include "mockos/TextFile.h"
 #include "mockos/ImageFile.h"
 #include "mockos/BasicDisplayVisitor.h"
+#include "mockos/MetadataDisplayVisitor.h"
 
 #include <iostream>
 
@@ -17,17 +18,19 @@ int main (int argc, char * argv[]) {
     tf->read();
 
     ImageFile* img = new ImageFile("test");
-    vector <char> vi = {'f', 'g', 'h', 'i', 'e'};
+    vector <char> vi = {'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3'};
     img->write(vi);
     img->read();
-    vector<char> ap1 = {'g'};
-    img->append(ap1);
-    img->read();
-    cout<< img->getSize() << endl;
+    //cout<< img->getSize() << endl;
 
     BasicDisplayVisitor* bv = new BasicDisplayVisitor();
+    //cout << bv << endl;
     tf->accept(bv);
     img->accept(bv);
+    MetadataDisplayVisitor* mv = new MetadataDisplayVisitor();
+    tf->accept(mv);
+    img->accept(mv);
+
 
     return 0;
 }

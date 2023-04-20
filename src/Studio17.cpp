@@ -17,7 +17,7 @@ int main (int argc, char * argv[]) {
     TextFile* tf = new TextFile("Test.txt");
     sf.addFile("Test.txt", tf);
     sf.addFile("hello.img", img);
-    sf.createFile("Test1.txt");
+    //sf.createFile("Test1.txt");
     sf.openFile("Test2.txt");
     tf->write(vc);
     cout << "TextFile reading: " << endl;
