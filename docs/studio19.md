@@ -14,4 +14,5 @@ of what we are trying to accomplish here, we are letting the visitor have the po
 instead of using inheritance. So we connect the different classes by making a relationship between those through
 forward calling the class. This way, the original family of classes is not being clutered while we are still able to add
 further functionality to our program.
-5. A negative consequence of visitor pattern is
+5. A negative consequence of visitor pattern is the code for are all spread apart in different files of the visitor objects
+which can make the code difficult to read and understand because you have to follow the logic through the different files.

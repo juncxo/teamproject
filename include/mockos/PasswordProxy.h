@@ -2,6 +2,12 @@
 #include "AbstractFile.h"
 #include <string>
 
+
+enum PasswordClass{
+    passwordSuccess,
+    incorrectPassword,
+    passwordUnableToAppend
+};
 class PasswordProxy : public AbstractFile{
 public:
     PasswordProxy(AbstractFile*, std::string);
