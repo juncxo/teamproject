@@ -56,9 +56,11 @@ int CommandPrompt::run() {
             listCommands();
         } else {
             bool oneWordLong = true;
-            for (int i = 0; i < input.length(); i++) {
-                if (input[i] == ' ') {
+            int index = 0;
+            for (index = 0; index < input.length(); index++) {
+                if (input[index] == ' ') {
                     oneWordLong = false;
+                    break;
                 }
             }
             if (oneWordLong) { // 1 word long
@@ -75,7 +77,33 @@ int CommandPrompt::run() {
                     return commandDoesntExist;
                 }
             } else { // longer than 1 word
-
+                istringstream iss (input);
+                string word1;
+                iss >> word1;
+                if (word1 == "help") {
+                    string word2;
+                    iss >> word2;
+                    if (commandMap.find(word2) != commandMap.end()) {
+                        commandMap[word2]->displayInfo();
+                    }
+                    else {
+                        cout << "Command does not exist." << endl;
+                    }
+                }
+                else {
+                    string truncatedInput = input.erase(0, index);
+                    if (commandMap.find(word1) != commandMap.end()) {
+                        if (commandMap[word1]->execute(truncatedInput) != 0) {
+                            cout << "Command failed" << endl;
+                            return commandFailed;
+                        }
+                        return commandSuccess;
+                    }
+                    else {
+                        cout << "Command does not exist. " << endl;
+                        return commandDoesntExist;
+                    }
+                }
             }
         }
     }
