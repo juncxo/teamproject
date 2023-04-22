@@ -21,7 +21,6 @@ public:
     virtual void setFileFactory(AbstractFileFactory*);
     virtual int addCommand(std::string, AbstractCommand*);
     virtual int run();
-    virtual int execute(std::string);
 
 protected:
     virtual void listCommands();

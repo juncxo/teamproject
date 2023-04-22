@@ -43,10 +43,6 @@ std::string CommandPrompt::prompt() {
     return input;
 }
 
-int CommandPrompt::execute (string str) {
-
-}
-
 int CommandPrompt::run() {
     while (true) {
         string input = prompt();
@@ -91,7 +87,9 @@ int CommandPrompt::run() {
                     }
                 }
                 else {
-                    string truncatedInput = input.erase(0, index);
+
+                    string truncatedInput = input.substr(0, index);
+
                     if (commandMap.find(word1) != commandMap.end()) {
                         if (commandMap[word1]->execute(truncatedInput) != 0) {
                             cout << "Command failed" << endl;
