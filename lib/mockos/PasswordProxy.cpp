@@ -14,11 +14,10 @@ PasswordProxy::~PasswordProxy() {
 }
 
 string PasswordProxy::passwordPrompt() {
-    cout << "Enter a password" << endl;
     string input;
+    cout << "Enter a password" << endl;
     cin >> input;
-    istringstream iss(input);
-
+    return input;
 }
 
 bool PasswordProxy::passwordCheck(string str){
@@ -32,7 +31,7 @@ vector<char> PasswordProxy::read() {
     vector<char> pv;
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){
-        //
+        return protectedFile->read();
     }
     return pv;
 }
@@ -40,8 +39,7 @@ vector<char> PasswordProxy::read() {
 int PasswordProxy::write(vector<char> pv){
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){
-        //
-        return passwordSuccess;
+        return protectedFile->write(pv);
     }
     return incorrectPassword;
 }
@@ -49,14 +47,14 @@ int PasswordProxy::write(vector<char> pv){
 int PasswordProxy::append(vector<char> pv){
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){
-        //
-        return passwordSuccess;
+
+        return protectedFile->append(pv);
     }
     return passwordUnableToAppend;
 }
 
 unsigned int PasswordProxy::getSize(){
-    return password.size();
+    return protectedFile->getSize();
 }
 
 string PasswordProxy::getName(){

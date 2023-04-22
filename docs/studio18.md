@@ -24,7 +24,7 @@
 
 20. Output:
 X X
-X
+ X
 X X
 X X X X X3
 21. The output was the above. It successfully printed the expected output when given the read and write functions.
