@@ -46,6 +46,12 @@ std::string CommandPrompt::prompt() {
 int CommandPrompt::run() {
     while (true) {
         string input = prompt();
+        /*string *input2 = new string[input.size()];
+        for (int i = 0; i < input.size(); i++ ) {
+            input2[i] = input[i];
+        }
+        string inputCopy = input2->c_str();*/
+
         if (input == "q") {
             return userQuit;
         } else if (input == "help") {
@@ -60,7 +66,8 @@ int CommandPrompt::run() {
                     break;
                 }
             }
-            if (oneWordLong) { // 1 word long
+
+            if (!oneWordLong) { // 1 word long
                 if (commandMap.find(input) != commandMap.end()) {
                     if (commandMap[input]->execute("") != 0) { //returns an error
                         cout << "Command failed" << endl;
@@ -73,14 +80,20 @@ int CommandPrompt::run() {
                     return commandDoesntExist;
                 }
             } else { // longer than 1 word
-                istringstream iss (input);
+                string inputCopy = "help " + input;
+                istringstream iss (inputCopy);
+                cout << inputCopy << endl;
                 string word1;
                 iss >> word1;
+
+
                 if (word1 == "help") {
                     string word2;
                     iss >> word2;
                     if (commandMap.find(word2) != commandMap.end()) {
+
                         commandMap[word2]->displayInfo();
+
                     }
                     else {
                         cout << "Command does not exist." << endl;
