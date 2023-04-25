@@ -33,7 +33,7 @@ int SimpleFileSystem::createFile(string f) {
         }
     }
     string extension = f.substr(dotIndex + 1, dotIndex+3);        //studio 17 error came from here
-    //string truncatedName = f.erase(dotIndex, f.length() - dotIndex - 1);
+
     pair <string, AbstractFile*> filePair;
 
     if (extension == "txt") {

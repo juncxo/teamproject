@@ -13,6 +13,7 @@ unsigned int TextFile::getSize () {
 }
 
 string TextFile::getName () {
+    cout << name << endl;
     return name;
 }
 

@@ -12,7 +12,7 @@ AbstractFile* SimpleFileFactory::createFile(string cf){
             dotIndex = i;
         }
     }
-    string extension = cf.erase(0, dotIndex+1);
+    string extension = cf.substr(dotIndex + 1, dotIndex+3);
     if (extension == "txt") {
         TextFile* tf = new TextFile (cf);
         return tf;

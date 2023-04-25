@@ -16,8 +16,8 @@ int main (int argc, char * argv[]) {
     CommandPrompt* cmd = new CommandPrompt();
     cmd->setFileSystem(sfs);
     cmd->setFileFactory(sff);
-    cmd->addCommand("Touch", tc);
+    cmd->addCommand("help touch", tc);
+    cmd->addCommand("help visitor", tc);
     cmd->run();
-
-
+    return 0;
 }
