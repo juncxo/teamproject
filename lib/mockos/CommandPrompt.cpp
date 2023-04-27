@@ -26,7 +26,7 @@ int CommandPrompt::addCommand(string str, AbstractCommand* ad) {
         return failedToInsert;
     }
     return commandSuccess;
-    //need to check if insert was correct, else return fails
+
 }
 
 void CommandPrompt::listCommands() {
@@ -46,12 +46,6 @@ std::string CommandPrompt::prompt() {
 int CommandPrompt::run() {
     while (true) {
         string input = prompt();
-        /*string *input2 = new string[input.size()];
-        for (int i = 0; i < input.size(); i++ ) {
-            input2[i] = input[i];
-        }
-        string inputCopy = input2->c_str();*/
-
         if (input == "q") {
             return userQuit;
         } else if (input == "help") {
@@ -71,13 +65,11 @@ int CommandPrompt::run() {
                 if (commandMap.find(input) != commandMap.end()) {
                     if (commandMap[input]->execute("") != 0) { //returns an error
                         cout << "Command failed" << endl;
-                        //return commandFailed;
                     }
 
                 }
                 else {
                     cout << "Command does not exist." << endl;
-                    //return commandDoesntExist;
                 }
             } else { // longer than 1 word
 
@@ -105,12 +97,10 @@ int CommandPrompt::run() {
                     if (commandMap.find(truncatedInput) != commandMap.end()) {
                         if (commandMap[truncatedInput]->execute(" ") != 0) {
                             cout << "Command failed" << endl;
-                           // return commandFailed;
                         }
                     }
                     else {
                         cout << "Command does not exist. " << endl;
-                        //return commandDoesntExist;
                     }
                 }
             }

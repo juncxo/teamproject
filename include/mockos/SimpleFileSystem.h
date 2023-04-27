@@ -16,7 +16,6 @@ enum SFSErrors{
 class SimpleFileSystem : public AbstractFileSystem{
 public:
     virtual int addFile(std::string, AbstractFile *);
-    //virtual int createFile(std::string);
     virtual AbstractFile * openFile(std::string);
     virtual int closeFile(AbstractFile *);
     virtual int deleteFile(std::string);

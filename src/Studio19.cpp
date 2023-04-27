@@ -21,16 +21,14 @@ int main (int argc, char * argv[]) {
     vector <char> vi = {'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3'};
     img->write(vi);
     img->read();
-    //cout<< img->getSize() << endl;
 
     BasicDisplayVisitor* bv = new BasicDisplayVisitor();
-    //cout << bv << endl;
+
     tf->accept(bv);
     img->accept(bv);
     MetadataDisplayVisitor* mv = new MetadataDisplayVisitor();
     tf->accept(mv);
     img->accept(mv);
-
 
     return 0;
 }

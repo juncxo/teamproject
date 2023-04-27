@@ -11,13 +11,10 @@ int main (int argc, char * argv[]) {
     img->write(vc);
     cout << "imgFile reading: " << endl;
     img->read();
-    /*cout << img->getName()<<endl;
-    cout << img->getSize()<<endl;*/
     SimpleFileSystem sf;
     TextFile* tf = new TextFile("Test.txt");
     sf.addFile("Test.txt", tf);
     sf.addFile("hello.img", img);
-    //sf.createFile("Test1.txt");
     sf.openFile("Test2.txt");
     tf->write(vc);
     cout << "TextFile reading: " << endl;

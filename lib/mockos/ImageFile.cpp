@@ -20,7 +20,6 @@ string ImageFile::getName () {
 int ImageFile::write(vector <char> vc) {
     int size = (vc[vc.size() - 1] - 48);
     imageSize = size;
-    //cout << imageSize << endl;
    if (vc.size() - 1 != imageSize * imageSize) {
       imageContents.clear();
       imageSize = 0;
@@ -44,17 +43,6 @@ int ImageFile::append(vector <char> vc) {
 
 
 vector<char> ImageFile::read () {
-    /*
-    for (int y = imageSize - 1; y >= 0; y--) {
-        for (int x = 0; x < imageSize; x++) {
-            std::cout << imageContents[y * imageSize + x];
-        }
-        cout << endl;
-    }
-
-
-    cout << endl;
-    */
     return imageContents;
 }
 

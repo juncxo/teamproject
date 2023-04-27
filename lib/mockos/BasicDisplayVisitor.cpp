@@ -14,7 +14,7 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile * image) {
            cout << imgContent[y * imageSize + x];
 
         }
-        //cout << "test4" << endl;
+
         cout << endl;
     }
     cout << endl;

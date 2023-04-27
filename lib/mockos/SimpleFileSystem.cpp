@@ -1,5 +1,4 @@
 #include "mockos/SimpleFileSystem.h"
-#include <iostream>
 #include <string>
 #include "mockos/TextFile.h"
 #include "mockos/ImageFile.h"
@@ -7,11 +6,10 @@ using namespace std;
 
 int SimpleFileSystem::addFile(string a, AbstractFile* p){
     if (maps.count(a) != 0) {
-        //file with that name already exists
-        return fileExists; //file exists
+        return fileExists;
     }
     if(p == NULL){
-        return pointerIsNull; //it is null
+        return pointerIsNull;
     }
     pair <string, AbstractFile*> filePair;
     filePair.first = a;
@@ -20,47 +18,11 @@ int SimpleFileSystem::addFile(string a, AbstractFile* p){
     return SFSSuccess;
 }
 
-/* Comment out for studio 18
-int SimpleFileSystem::createFile(string f) {
-    if (maps.count(f) != 0) {
-        //file with that name already exists
-        return fileExists; //file exists
-    }
-    int dotIndex;
-    for (int i = 0; i < f.length(); i++) {
-        if (f[i] == '.') {
-            dotIndex = i;
-        }
-    }
-    string extension = f.substr(dotIndex + 1, dotIndex+3);        //studio 17 error came from here
 
-    pair <string, AbstractFile*> filePair;
-
-    if (extension == "txt") {
-        TextFile* tf = new TextFile (f);
-        filePair.first = f;
-        filePair.second = tf;
-        maps.insert(filePair);
-        //cout << "inserted into the map" << endl;
-        return SFSSuccess;
-
-    }
-    else if (extension == "img") {
-        ImageFile* image = new ImageFile (f);
-        filePair.first = f;
-        filePair.second = image;
-        maps.insert(filePair);
-        //cout << "inserted into the map" << endl;
-
-        return SFSSuccess;
-    }
-    return invalidExtension;
-}
-*/
 
 AbstractFile* SimpleFileSystem::openFile(string of){
     if (maps.count(of) != 0) {
-        //file with that name already exists
+
         if (sets.find(maps[of]) == sets.end()) {
             sets.insert (maps[of]);
             return maps[of];

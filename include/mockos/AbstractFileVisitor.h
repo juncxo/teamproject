@@ -1,9 +1,8 @@
 #pragma once
 #include <vector>
-//#include "ImageFile.h"
-//#include  "TextFile.h"
 class ImageFile;
 class TextFile;
+
 
 class AbstractFileVisitor {
 public:

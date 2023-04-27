@@ -4,7 +4,11 @@
 #include "AbstractFile.h"
 
 
-enum imageReturns {imageSuccess, sizeMismatchError, incorrectPixelError, appendNotSupportedError};
+enum imageReturns {imageSuccess,
+        sizeMismatchError,
+        incorrectPixelError,
+        appendNotSupportedError
+};
 
 class ImageFile : public AbstractFile {
 public:
