@@ -1,4 +1,5 @@
 #include "mockos/TouchCommand.h"
+#include "mockos/PasswordProxy.h"
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -27,3 +28,6 @@ int TouchCommand::execute(std::string fileName) {
     }
 
 }
+
+
+

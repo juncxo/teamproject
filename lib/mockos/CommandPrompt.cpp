@@ -71,13 +71,13 @@ int CommandPrompt::run() {
                 if (commandMap.find(input) != commandMap.end()) {
                     if (commandMap[input]->execute("") != 0) { //returns an error
                         cout << "Command failed" << endl;
-                        return commandFailed;
+                        //return commandFailed;
                     }
 
                 }
                 else {
                     cout << "Command does not exist." << endl;
-                    return commandDoesntExist;
+                    //return commandDoesntExist;
                 }
             } else { // longer than 1 word
 
@@ -103,14 +103,14 @@ int CommandPrompt::run() {
                     string truncatedInput = input.substr(indexSpace+1, string::npos);
 
                     if (commandMap.find(truncatedInput) != commandMap.end()) {
-                        if (commandMap[truncatedInput]->execute("") != 0) {
+                        if (commandMap[truncatedInput]->execute(" ") != 0) {
                             cout << "Command failed" << endl;
-                            return commandFailed;
+                           // return commandFailed;
                         }
                     }
                     else {
                         cout << "Command does not exist. " << endl;
-                        return commandDoesntExist;
+                        //return commandDoesntExist;
                     }
                 }
             }
