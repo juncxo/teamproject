@@ -1,4 +1,6 @@
 # Studio 17
+1) Aranna, Andy, Luke
+
 
 2) Test the functionality of your ImageFile class. Describe the tests you ran as the answer
 to this question.
@@ -14,6 +16,7 @@ and it returned the correct error.
 providing their specific implementations. We thus can have classes extending from the same interface 
 that behave and are implemented differently. Most notably, concrete classes requires an unnecessarily rigid 
 approach to coding. 
+
 
 4) To create objects of arbitrary file types, we would need to make the file extension customizable:
 We would need to add a member variable to map file extensions to file types, the create method would
