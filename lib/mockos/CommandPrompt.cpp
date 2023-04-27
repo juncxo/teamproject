@@ -39,7 +39,7 @@ std::string CommandPrompt::prompt() {
     cout << "Enter a command, q to quit, help for a list of commands, or help followed by a command name for more information about that command: " << endl;
     cout << "$  ";
     string input;
-    cin >> input;
+    getline(cin, input);
     return input;
 }
 
@@ -67,7 +67,7 @@ int CommandPrompt::run() {
                 }
             }
 
-            if (!oneWordLong) { // 1 word long
+            if (oneWordLong) { // 1 word long
                 if (commandMap.find(input) != commandMap.end()) {
                     if (commandMap[input]->execute("") != 0) { //returns an error
                         cout << "Command failed" << endl;
@@ -80,9 +80,8 @@ int CommandPrompt::run() {
                     return commandDoesntExist;
                 }
             } else { // longer than 1 word
-                string inputCopy = "help " + input;
-                istringstream iss (inputCopy);
-                cout << inputCopy << endl;
+
+                istringstream iss (input);
                 string word1;
                 iss >> word1;
 
@@ -103,8 +102,8 @@ int CommandPrompt::run() {
 
                     string truncatedInput = input.substr(indexSpace+1, string::npos);
 
-                    if (commandMap.find(word1) != commandMap.end()) {
-                        if (commandMap[word1]->execute(truncatedInput) != 0) {
+                    if (commandMap.find(truncatedInput) != commandMap.end()) {
+                        if (commandMap[truncatedInput]->execute("") != 0) {
                             cout << "Command failed" << endl;
                             return commandFailed;
                         }
