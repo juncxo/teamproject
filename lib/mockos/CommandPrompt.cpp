@@ -68,7 +68,7 @@ int CommandPrompt::run() {
 
             if (oneWordLong) { // 1 word long
                 if (commandMap.find(input) != commandMap.end()) {
-                    if (commandMap[input]->execute("") != 0) { //returns an error
+                    if (commandMap[input]->execute(input) != 0) { //returns an error
                         cout << "Command failed" << endl;
                     }
 
@@ -100,7 +100,7 @@ int CommandPrompt::run() {
                     string truncatedInput = input.substr(indexSpace+1, string::npos);
 
                     if (commandMap.find(truncatedInput) != commandMap.end()) {
-                        if (commandMap[truncatedInput]->execute(" ") != 0) {
+                        if (commandMap[truncatedInput]->execute("") != 0) {
                             cout << "Command failed" << endl;
                         }
                     }

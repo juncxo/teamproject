@@ -11,20 +11,12 @@ LSCommand::LSCommand(SimpleFileSystem* parameter) {
     sfs = parameter;
 }
 
-std::string LSCommand::getInput() {
-    string input;
-    getline(cin, input);
-    execute(input);
-    return input;
-}
-
 void LSCommand::displayInfo () {
     cout << "LS displays the list of current files, LS can be invoked by calling the command: LS" << endl;
 }
 
 int LSCommand::execute(std::string input) {
-    input = getInput();
-    if(input == "ls"){
+    if (input == "ls"){
         //get the max length
         int index1 = 0;
         for (string str : sfs->getFileNames()) {

@@ -10,7 +10,6 @@ class LSCommand : public AbstractCommand{
 public:
     LSCommand(SimpleFileSystem*);
     virtual int execute(std::string) override;
-    std::string getInput();
     virtual void displayInfo() override;
 private:
     int longestFileName;
