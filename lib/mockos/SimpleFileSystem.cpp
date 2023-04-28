@@ -54,3 +54,11 @@ int SimpleFileSystem::deleteFile(string df) {
     }
     return fileDoesNotExist;
 }
+
+std::set<std::string> SimpleFileSystem::getFileNames(){
+    std::set<string> returnedSet;
+    for (AbstractFile* af : sets) {
+        returnedSet.insert(af->getName());
+    }
+    return returnedSet;
+}

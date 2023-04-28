@@ -19,6 +19,7 @@ public:
     virtual AbstractFile * openFile(std::string);
     virtual int closeFile(AbstractFile *);
     virtual int deleteFile(std::string);
+    virtual std::set<std::string> getFileNames();
 private:
     std::map<std::string, AbstractFile*> maps;
     std::set<AbstractFile*> sets;

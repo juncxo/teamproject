@@ -9,7 +9,7 @@ using namespace std;
 
 int main (int argc, char * argv[]) {
     AbstractFile* protect = new TextFile ("thing");
-    AbstractFile* proxy = new PasswordProxy(protect, "i love CS332");
+    AbstractFile* proxy = new PasswordProxy(protect, "i hate");
     vector <char> theOtherThing;
     theOtherThing.push_back('h');
     theOtherThing.push_back('i');
