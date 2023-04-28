@@ -44,7 +44,6 @@ int SimpleFileSystem::closeFile(AbstractFile *cf) {
 
 int SimpleFileSystem::deleteFile(string df) {
     if (maps.count(df) != 0) {
-        //file with that name already exists
         if (sets.find(maps[df]) != sets.end()) {
             return fileIsOpen;
         }
