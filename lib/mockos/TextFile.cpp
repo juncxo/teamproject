@@ -28,10 +28,20 @@ int TextFile::append(vector <char> vc) {
     for (int i = 0; i < vc.size(); i++) {
         contents.push_back (vc[i]);
     }
+
+    /*if () {
+        //failures
+    }*/
     return 0;
 }
 
 vector<char> TextFile::read () {
+    /*
+    for (int i = 0; i < contents.size(); i++) {
+        cout << contents[i];
+    }
+    cout << endl;
+     */
     return contents;
 }
 

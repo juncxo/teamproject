@@ -9,7 +9,6 @@ enum LSErrors {
 class LSCommand : public AbstractCommand{
 public:
     LSCommand(SimpleFileSystem*);
-    virtual int run();
     virtual int execute(std::string) override;
     std::string getInput();
     virtual void displayInfo() override;

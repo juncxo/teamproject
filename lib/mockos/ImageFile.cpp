@@ -23,7 +23,7 @@ int ImageFile::write(vector <char> vc) {
    if (vc.size() - 1 != imageSize * imageSize) {
       imageContents.clear();
       imageSize = 0;
-
+      cout << "Test " << endl;
       return sizeMismatchError;
   }
     for (int i = 0; i < imageSize * imageSize; i++) {

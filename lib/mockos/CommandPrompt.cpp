@@ -46,6 +46,11 @@ std::string CommandPrompt::prompt() {
 int CommandPrompt::run() {
     while (true) {
         string input = prompt();
+        string * what = new string[input.size()];
+        for (int i=0; i < input.size(); i++) {
+            what[i] = input[i];
+        }
+
         if (input == "q") {
             return userQuit;
         } else if (input == "help") {
@@ -105,6 +110,7 @@ int CommandPrompt::run() {
                 }
             }
         }
+
     }
-    return commandSuccess;
+   // return commandSuccess;
 }

@@ -9,7 +9,6 @@ LSCommand::LSCommand(SimpleFileSystem* parameter) {
     longestFileName = 0;
     longestFileType = 0;
     sfs = parameter;
-    execute ("");
 }
 
 std::string LSCommand::getInput() {
@@ -79,13 +78,13 @@ int LSCommand::execute(std::string input) {
 
             string fileType;
             if (extension == "txt") {
-                fileType == "text";
+                fileType = "text";
                 if (str.length() > longestFileType) {
                     longestFileType = fileType.length();
                 }
             }
             else if (extension == "img"){
-                fileType == "image";
+                fileType = "image";
                 if (str.length() > longestFileType) {
                     longestFileType = fileType.length();
                 }
@@ -108,10 +107,10 @@ int LSCommand::execute(std::string input) {
             string extension = str.substr(dotIndex + 1, str.npos);
             string fileType;
             if (extension == "txt") {
-                fileType == "text";
+                fileType = "text";
             }
             else if (extension == "img"){
-                fileType == "image";
+                fileType = "image";
             }
             else {
                 return unknownFileType;
