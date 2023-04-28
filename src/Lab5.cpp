@@ -31,7 +31,7 @@ int main (int argc, char * argv[]) {
     sfs->openFile ("hi.txt");
     cmd->setFileSystem(sfs);
     cmd->addCommand("ls", ls);
-    cmd->addCommand("ls -m", ls);
+    cmd->addCommand("-m", ls);
     cmd->run();
     return 0;
 }

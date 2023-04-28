@@ -47,8 +47,8 @@ int LSCommand::execute(std::string input) {
             index2++;
         }
     }
-    else if (input == "ls -m") {
-        int dotIndex = 0;
+    else if (input == "-m") {
+
         //get the max file length
         for (string str : sfs->getFileNames()) {
             if (str.length() > longestFileName) {
@@ -60,6 +60,7 @@ int LSCommand::execute(std::string input) {
         //get the max file type length
         for (string str : sfs->getFileNames()) {
             //find the period in the file name
+            int dotIndex = 0;
             for (int i = 0; i < str.length(); i++) {
                 if (str[i] == '.') {
                     dotIndex = i;
@@ -88,7 +89,13 @@ int LSCommand::execute(std::string input) {
 
         //print file info
         for (string str : sfs->getFileNames()) {
-
+            //find the period in the file name
+            int dotIndex = 0;
+            for (int i = 0; i < str.length(); i++) {
+                if (str[i] == '.') {
+                    dotIndex = i;
+                }
+            }
             //print the file name
             cout << str;
             for (int i = 0; i < longestFileName + 1 - str.length(); i++) {
