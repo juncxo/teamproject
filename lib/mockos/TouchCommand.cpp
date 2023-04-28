@@ -2,7 +2,7 @@
 #include "mockos/PasswordProxy.h"
 #include <string>
 #include <iostream>
-#include <sstream>
+
 using namespace std;
 
 TouchCommand::TouchCommand(AbstractFileSystem* afs, AbstractFileFactory* aff)  {
