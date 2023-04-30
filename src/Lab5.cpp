@@ -25,9 +25,9 @@ int main (int argc, char * argv[]) {
     sfs->addFile("image1.img", image);
     sfs->addFile("image2.img", image2);
     sfs->addFile ("hi.txt", tf2);
-    sfs->openFile("hello.txt");
+  //  sfs->openFile("hello.txt");
     sfs->openFile ("image1.img");
-    sfs->openFile ("image2.img");
+  //  sfs->openFile ("image2.img");
     sfs->openFile ("hi.txt");
     cmd->setFileSystem(sfs);
     cmd->addCommand("ls", ls);

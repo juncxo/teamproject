@@ -22,7 +22,7 @@ int LSCommand::execute(std::string input) {
         for (string str : sfs->getFileNames()) {
 
             //maintain the max length for alignment
-            if ((str.length() > longestFileName) && (index1 % 2 == 0)) {
+            if (str.length() > longestFileName) {
                 longestFileName = str.length();
             }
 
@@ -36,6 +36,8 @@ int LSCommand::execute(std::string input) {
             cout << str;
 
             //align based on how much the string length differs from the longest file name
+
+
             for (int i = 0; i < longestFileName + 1 - str.length(); i++) {
                 cout << " ";
             }
@@ -115,7 +117,7 @@ int LSCommand::execute(std::string input) {
                 return unknownFileType;
             }
             cout << fileType;
-            for (int i = 0; i < longestFileType + 1 - str.length(); i++) {
+            for (int i = 0; i < longestFileType + 1 - fileType.length(); i++) {
                 cout << " ";
             }
 
