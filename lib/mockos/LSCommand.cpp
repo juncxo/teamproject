@@ -52,7 +52,7 @@ int LSCommand::execute(std::string input) {
     }
     else if (input == "ls -m") {
 
-
+//awagw
         //print file info
         MetadataDisplayVisitor* mdv = new MetadataDisplayVisitor();
 
