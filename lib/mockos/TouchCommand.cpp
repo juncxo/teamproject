@@ -15,18 +15,43 @@ void TouchCommand::displayInfo() {
 
 }
 
-int TouchCommand::execute(std::string fileName) {
-    AbstractFile* createdFile = touchFactory->createFile(fileName);
-    if (createdFile != nullptr) {
-        if (touchSystem->addFile(fileName, createdFile) != 0) {
-            return couldNotAddFile;
+int TouchCommand::execute(std::string input) {
+    int spaceIndex = 0;
+    for (int i = 0; i < input.length(); i++) {
+        if (input[i] == ' ') {
+            spaceIndex = i;
+            break;
         }
-        return touchCommandSuccess;
+    }
+    string fileName = input.substr(spaceIndex+1, input.npos);
+    cout << spaceIndex << endl;
+    cout << "fileName: " << fileName << endl;
+    if (fileName.substr(fileName.size() - 3) == " -p") {
+
+        string fileNameWithoutTheDashP = fileName.substr(0, fileName.size() - 3);
+        AbstractFile *createdFile = touchFactory->createFile(fileNameWithoutTheDashP);
+        string password;
+        cout << "Enter a password to protect the file: " << endl;
+        cin >> password;
+
+
+        if (createdFile != nullptr) {
+            PasswordProxy* proxy = new PasswordProxy(createdFile, password);
+            touchSystem->addFile(fileNameWithoutTheDashP, proxy);
+            return touchCommandSuccess;
+        } else {
+            return fileNotCreatedSuccessfully;
+        }
     }
     else {
-        return fileNotCreatedSuccessfully;
+        AbstractFile *createdFile = touchFactory->createFile(fileName);
+        if (createdFile != nullptr) {
+            touchSystem->addFile(fileName, createdFile);
+            return touchCommandSuccess;
+        } else {
+            return fileNotCreatedSuccessfully;
+        }
     }
-
 }
 
 

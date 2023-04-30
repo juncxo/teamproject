@@ -1,6 +1,7 @@
 #include "mockos/LSCommand.h"
 #include <string>
 #include <iostream>
+#include "mockos/MetadataDisplayVisitor.h"
 
 using namespace std;
 
@@ -51,43 +52,6 @@ int LSCommand::execute(std::string input) {
     }
     else if (input == "ls -m") {
 
-        //get the max file length
-        for (string str : sfs->getFileNames()) {
-            if (str.length() > longestFileName) {
-                longestFileName = str.length();
-            }
-
-        }
-
-        //get the max file type length
-        for (string str : sfs->getFileNames()) {
-            //find the period in the file name
-            int dotIndex = 0;
-            for (int i = 0; i < str.length(); i++) {
-                if (str[i] == '.') {
-                    dotIndex = i;
-                }
-            }
-            //get the extension to find the file type
-            string extension = str.substr(dotIndex + 1, str.npos);
-
-            string fileType;
-            if (extension == "txt") {
-                fileType = "text";
-                if (str.length() > longestFileType) {
-                    longestFileType = fileType.length();
-                }
-            }
-            else if (extension == "img"){
-                fileType = "image";
-                if (str.length() > longestFileType) {
-                    longestFileType = fileType.length();
-                }
-            }
-            else {
-                return unknownFileType;
-            }
-        }
 
         //print file info
         for (string str : sfs->getFileNames()) {
@@ -96,35 +60,20 @@ int LSCommand::execute(std::string input) {
             for (int i = 0; i < str.length(); i++) {
                 if (str[i] == '.') {
                     dotIndex = i;
+                    break;
                 }
             }
-            //print the file name
-            cout << str;
-            for (int i = 0; i < longestFileName + 1 - str.length(); i++) {
-                cout << " ";
-            }
-
-            //print the file type
-            string extension = str.substr(dotIndex + 1, str.npos);
-            string fileType;
+            string extension = str.substr(dotIndex + 1, dotIndex+3);
+            MetadataDisplayVisitor* mdv = new MetadataDisplayVisitor();
             if (extension == "txt") {
-                fileType = "text";
+                //mdv->visit_TextFile();
             }
-            else if (extension == "img"){
-                fileType = "image";
+            else if (extension == "img") {
+                //mdv->visit_ImageFile();
             }
             else {
                 return unknownFileType;
             }
-            cout << fileType;
-            for (int i = 0; i < longestFileType + 1 - fileType.length(); i++) {
-                cout << " ";
-            }
-
-            //print the file size
-            cout << 5; //PLACEHOLDER
-            //TODO: ADD FILE SIZE
-            cout << endl;
 
         }
 

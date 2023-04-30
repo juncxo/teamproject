@@ -57,8 +57,9 @@ int SimpleFileSystem::deleteFile(string df) {
 
 std::set<std::string> SimpleFileSystem::getFileNames(){
     std::set<string> returnedSet;
-    for (AbstractFile* af : sets) {
-        returnedSet.insert(af->getName());
+
+    for (pair <string, AbstractFile*> filePair : maps) {
+        returnedSet.insert(filePair.first);
     }
     return returnedSet;
 }

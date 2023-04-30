@@ -6,6 +6,7 @@
 #include "mockos/CommandPrompt.h"
 #include "mockos/LSCommand.h"
 #include "mockos/RemoveCommand.h"
+#include "mockos/TouchCommand.h"
 #include <vector>
 #include <iostream>
 
@@ -13,8 +14,12 @@ using namespace std;
 
 int main (int argc, char * argv[]) {
     SimpleFileSystem* sfs = new SimpleFileSystem();
+    SimpleFileFactory* sff = new SimpleFileFactory();
+
     AbstractCommand* ls = new LSCommand (sfs);
     AbstractCommand* rm = new RemoveCommand (sfs);
+    AbstractCommand* tc = new TouchCommand (sfs, sff);
+
 
     CommandPrompt* cmd = new CommandPrompt();
     TextFile* tf = new TextFile ("hello.txt");
@@ -36,6 +41,7 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("ls", ls);
     cmd->addCommand("-m", ls);
     cmd->addCommand("rm", rm);
+    cmd->addCommand("touch", tc);
     cmd->run();
     return 0;
 }

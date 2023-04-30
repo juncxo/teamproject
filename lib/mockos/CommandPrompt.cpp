@@ -117,5 +117,5 @@ int CommandPrompt::run() {
         }
 
     }
-   // return commandSuccess;
+    return commandSuccess;
 }
