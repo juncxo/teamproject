@@ -54,27 +54,17 @@ int LSCommand::execute(std::string input) {
 
 
         //print file info
-        for (string str : sfs->getFileNames()) {
-            //find the period in the file name
-            int dotIndex = 0;
-            for (int i = 0; i < str.length(); i++) {
-                if (str[i] == '.') {
-                    dotIndex = i;
-                    break;
-                }
-            }
-            string extension = str.substr(dotIndex + 1, dotIndex+3);
-            MetadataDisplayVisitor* mdv = new MetadataDisplayVisitor();
-            if (extension == "txt") {
-                //mdv->visit_TextFile();
-            }
-            else if (extension == "img") {
-                //mdv->visit_ImageFile();
-            }
-            else {
-                return unknownFileType;
-            }
+        MetadataDisplayVisitor* mdv = new MetadataDisplayVisitor();
 
+        set<string> variable = sfs->getFileNames();
+        auto iterator = variable.begin();
+        while (iterator != variable.end()) {
+            AbstractFile* abstract = sfs->openFile(*iterator);
+            if (abstract != nullptr) {
+                abstract -> accept(mdv);
+                sfs->closeFile (abstract);
+            }
+            iterator++;
         }
 
     }

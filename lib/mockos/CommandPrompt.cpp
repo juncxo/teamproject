@@ -46,10 +46,10 @@ std::string CommandPrompt::prompt() {
 int CommandPrompt::run() {
     while (true) {
         string input = prompt();
-        string * what = new string[input.size()];
+        /*string * what = new string[input.size()];
         for (int i=0; i < input.size(); i++) {
             what[i] = input[i];
-        }
+        }*/
 
         if (input == "q") {
             return userQuit;
@@ -74,6 +74,7 @@ int CommandPrompt::run() {
 
                 }
                 else {
+                    cout << "HERE" << endl;
                     cout << "Command does not exist." << endl;
                 }
             } else { // longer than 1 word
@@ -93,6 +94,7 @@ int CommandPrompt::run() {
                     }
                     else {
                         cout << "Command does not exist." << endl;
+
                     }
                 }
                 else if (commandMap.find(word1) != commandMap.end()) { //word1 is in the command map
@@ -115,7 +117,5 @@ int CommandPrompt::run() {
                 }
             }
         }
-
     }
-    return commandSuccess;
 }

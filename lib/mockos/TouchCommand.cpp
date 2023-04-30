@@ -24,8 +24,6 @@ int TouchCommand::execute(std::string input) {
         }
     }
     string fileName = input.substr(spaceIndex+1, input.npos);
-    cout << spaceIndex << endl;
-    cout << "fileName: " << fileName << endl;
     if (fileName.substr(fileName.size() - 3) == " -p") {
 
         string fileNameWithoutTheDashP = fileName.substr(0, fileName.size() - 3);

@@ -5,9 +5,9 @@
 using namespace std;
 
 void MetadataDisplayVisitor::visit_TextFile(TextFile* tf) {
-    cout << setw(20) << tf->getName();
-    cout << setw(20) << "text";
-    cout << setw (20) << tf->getSize() << endl;
+    cout << left << setw(20) << tf->getName();
+    cout << left << setw(20) << "text";
+    cout << left << setw (20) << tf->getSize() << endl;
 
 }
 
