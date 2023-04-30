@@ -49,7 +49,7 @@ int LSCommand::execute(std::string input) {
             index2++;
         }
     }
-    else if (input == "-m") {
+    else if (input == "ls -m") {
 
         //get the max file length
         for (string str : sfs->getFileNames()) {

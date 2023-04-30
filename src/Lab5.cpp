@@ -5,6 +5,7 @@
 #include "mockos/SimpleFileFactory.h"
 #include "mockos/CommandPrompt.h"
 #include "mockos/LSCommand.h"
+#include "mockos/RemoveCommand.h"
 #include <vector>
 #include <iostream>
 
@@ -13,6 +14,7 @@ using namespace std;
 int main (int argc, char * argv[]) {
     SimpleFileSystem* sfs = new SimpleFileSystem();
     AbstractCommand* ls = new LSCommand (sfs);
+    AbstractCommand* rm = new RemoveCommand (sfs);
 
     CommandPrompt* cmd = new CommandPrompt();
     TextFile* tf = new TextFile ("hello.txt");
@@ -29,9 +31,11 @@ int main (int argc, char * argv[]) {
     sfs->openFile ("image1.img");
   //  sfs->openFile ("image2.img");
     sfs->openFile ("hi.txt");
+
     cmd->setFileSystem(sfs);
     cmd->addCommand("ls", ls);
     cmd->addCommand("-m", ls);
+    cmd->addCommand("rm", rm);
     cmd->run();
     return 0;
 }

@@ -95,12 +95,17 @@ int CommandPrompt::run() {
                         cout << "Command does not exist." << endl;
                     }
                 }
+                else if (commandMap.find(word1) != commandMap.end()) { //word1 is in the command map
+                    if (commandMap[word1]->execute(input) != 0) {
+                        cout << "Command failed" << endl;
+                    }
+                }
                 else {
 
                     string truncatedInput = input.substr(indexSpace+1, string::npos);
 
                     if (commandMap.find(truncatedInput) != commandMap.end()) {
-                        if (commandMap[truncatedInput]->execute("") != 0) {
+                        if (commandMap[truncatedInput]->execute(input) != 0) {
                             cout << "Command failed" << endl;
                         }
                     }
