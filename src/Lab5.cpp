@@ -7,6 +7,8 @@
 #include "mockos/LSCommand.h"
 #include "mockos/RemoveCommand.h"
 #include "mockos/TouchCommand.h"
+#include "mockos/CatCommand.h"
+
 #include <vector>
 #include <iostream>
 
@@ -19,7 +21,7 @@ int main (int argc, char * argv[]) {
     AbstractCommand* ls = new LSCommand (sfs);
     AbstractCommand* rm = new RemoveCommand (sfs);
     AbstractCommand* tc = new TouchCommand (sfs, sff);
-
+    AbstractCommand* cat = new CatCommand (sfs);
 
     CommandPrompt* cmd = new CommandPrompt();
     TextFile* tf = new TextFile ("hello.txt");
@@ -32,6 +34,9 @@ int main (int argc, char * argv[]) {
     sfs->addFile("image1.img", image);
     sfs->addFile("image2.img", image2);
     sfs->addFile ("hi.txt", tf2);
+    vector <char> vc = {'a', 'b', 'c', 'd', 'e'};
+
+    tf2->write(vc);
   //  sfs->openFile("hello.txt");
     // sfs->openFile ("image1.img");
   //  sfs->openFile ("image2.img");
@@ -41,6 +46,8 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("-m", ls);
     cmd->addCommand("rm", rm);
     cmd->addCommand("touch", tc);
+    cmd->addCommand("cat", cat);
+
     cmd->run();
     return 0;
 }
