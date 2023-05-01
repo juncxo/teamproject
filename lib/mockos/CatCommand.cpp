@@ -29,7 +29,7 @@ int CatCommand::execute(std::string input) {
         AbstractFile* file = sfs->openFile(fileNameWithoutTheDashP);
         file->read();
         cout << endl;
-        cout << "Enter new data into the file (enter :wq or :q to quit with or without saving, respectively).";
+        cout << "Enter new data into the file (enter :wq or :q to quit with or without saving, respectively). " <<endl;
         vector<string> savedInput;
         vector<char> savedCharInput;
         string userInput;
@@ -55,7 +55,7 @@ int CatCommand::execute(std::string input) {
     }
     else {
         AbstractFile* file = sfs->openFile(fileName);
-        cout << "Replace the file with new data (enter :wq or :q to quit with or without saving, respectively).";
+        cout << "Replace the file with new data (enter :wq or :q to quit with or without saving, respectively). " << endl;
         vector<string> savedInput;
         vector<char> savedCharInput;
         string userInput;

@@ -49,6 +49,7 @@ int LSCommand::execute(std::string input) {
             }
             index2++;
         }
+        cout << endl;
     }
     else if (input == "ls -m") {
 
