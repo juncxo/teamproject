@@ -43,7 +43,12 @@ int MacroCommand::execute(std::string input) {
     string fileName = input.substr(finalSpaceIndex+1, input.npos);
     vector <string> commands = parse(inputWithoutTheFileName);
     for (string commandName : commands) {
-        if(execute(commandName + " " + fileName) != 0) {
+        if (commandName == "ls") {
+            if(execute(commandName) != 0) {
+                return MacroFail;
+            }
+        }
+        else if (execute(commandName + " " + fileName) != 0) {
             return MacroFail;
         }
     }
