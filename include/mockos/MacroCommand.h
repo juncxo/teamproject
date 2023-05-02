@@ -8,7 +8,7 @@
 enum MacroErrors {
     MacroSuccess, MacroFail
 };
-class MacroCommand : public AbstractCommand {
+class MacroCommand : public AbstractCommand, AbstractParsingStrategy {
 public:
     MacroCommand(SimpleFileSystem*);
     virtual int execute(std::string) override;
