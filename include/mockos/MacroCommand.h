@@ -6,15 +6,18 @@
 #include <vector>
 
 enum MacroErrors {
-    MacroSuccess, MacroFail
+    MacroSuccess, MacroFail, sizeNotEqualFailure
 };
 class MacroCommand : public AbstractCommand, AbstractParsingStrategy {
 public:
-    MacroCommand(SimpleFileSystem*);
+    MacroCommand(AbstractFileSystem*);
+    ~MacroCommand();
     virtual int execute(std::string) override;
+    void addCommand (AbstractCommand*);
     virtual void displayInfo() override;
+    void setParseStrategy(AbstractParsingStrategy*);
 private:
-    SimpleFileSystem* sfs;
-    std::vector<AbstractCommand> commands;
+    AbstractFileSystem* afs;
+    std::vector<AbstractCommand*> commands;
     AbstractParsingStrategy* aps;
 };

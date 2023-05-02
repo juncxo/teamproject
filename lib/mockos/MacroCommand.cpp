@@ -6,12 +6,28 @@
 using namespace std;
 
 
-MacroCommand::MacroCommand(SimpleFileSystem *parameter) {
-    sfs = parameter;
+MacroCommand::MacroCommand(AbstractFileSystem *parameter) {
+    afs = parameter;
+    aps = nullptr;
+
+}
+void MacroCommand::setParseStrategy(AbstractParsingStrategy* str) {
+    aps = str;
 }
 
 void MacroCommand::displayInfo () {
     cout << "macro commmands executes several commands in order, it is invoked by typing in a sequence of commands." << endl;
+}
+
+MacroCommand::~MacroCommand() {
+    for (int i = 0; i < commands.size(); i++) {
+        delete commands[i];
+    }
+    delete aps;
+}
+
+void MacroCommand::addCommand (AbstractCommand* cmd) {
+    commands.push_back(cmd);
 }
 
 /*
@@ -36,9 +52,12 @@ std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
 */
 
 int MacroCommand::execute(std::string input) {
+    if (aps != 0) {
+        return MacroFail;
+    }
 
 
-    /*
+/*
     int finalSpaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
@@ -48,17 +67,15 @@ int MacroCommand::execute(std::string input) {
 
     string inputWithoutTheFileName = input.substr(0, finalSpaceIndex-1);
     string fileName = input.substr(finalSpaceIndex+1, input.npos);
-    vector <string> commands = parse(inputWithoutTheFileName);
-    for (string commandName : commands) {
-        if (commandName == "ls") {
-            if(execute(commandName) != 0) {
-                return MacroFail;
-            }
-        }
-        else if (execute(commandName + " " + fileName) != 0) {
-            return MacroFail;
-        }
+*/
+
+    vector <string> listOfCommands = aps->parse(input);
+    if (listOfCommands.size() != commands.size()) {
+        return sizeNotEqualFailure;
     }
-    return MacroSuccess;
-     */
+    for (int i = 0; i < commands.size(); ++i) {
+      //  commands(execute->aps[i]);
+    }
+
+
 }
