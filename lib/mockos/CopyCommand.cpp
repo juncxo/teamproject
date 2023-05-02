@@ -35,12 +35,14 @@ int CopyCommand::execute(std::string input) {
 
 
     AbstractFile* sourceFile = sfs->openFile(sourceFileName);
-
     AbstractFile* destFile = sourceFile->clone(destFileName);
 
-
     //destFile->write(sourceFile->read());
-    sfs->addFile(destFile->getName(), destFile);
+    if (sfs->addFile(destFile->getName(), destFile) != 0) { //adding failed
+        delete sourceFile;
+        delete destFile;
+        return failedToAddCopy;
+    }
     sfs->closeFile(sourceFile);
     sfs->closeFile(destFile);
     return CopySuccess;

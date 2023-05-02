@@ -61,8 +61,11 @@ string PasswordProxy::getName(){
     return protectedFile->getName();
 }
 
-AbstractFile* PasswordProxy::clone (string str) {
-    return new PasswordProxy(*this);
+AbstractFile* PasswordProxy::clone (string fileName) {
+    PasswordProxy* newProxy =  new PasswordProxy(*this);
+    newProxy->protectedFile = this->protectedFile;
+    newProxy->password = this->password;
+    return newProxy;
 }
 
 void PasswordProxy::accept(AbstractFileVisitor* pafv){
