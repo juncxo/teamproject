@@ -18,6 +18,7 @@ public:
     virtual int write(std::vector<char>);
     virtual int append(std::vector<char>);
     virtual void accept(AbstractFileVisitor*);
+    virtual AbstractFile* clone(std::string);
 protected:
     std::string passwordPrompt();
     bool passwordCheck(std::string);

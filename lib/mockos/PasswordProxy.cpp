@@ -61,6 +61,10 @@ string PasswordProxy::getName(){
     return protectedFile->getName();
 }
 
+AbstractFile* PasswordProxy::clone (string str) {
+    return new PasswordProxy(*this);
+}
+
 void PasswordProxy::accept(AbstractFileVisitor* pafv){
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){

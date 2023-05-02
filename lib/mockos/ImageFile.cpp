@@ -46,6 +46,12 @@ vector<char> ImageFile::read () {
     return imageContents;
 }
 
+AbstractFile* ImageFile::clone (string fileName) {
+    ImageFile* newFile =  new ImageFile(*this);
+    newFile->imageName = fileName + ".img";
+    return newFile;
+}
+
 void ImageFile::accept(AbstractFileVisitor* afv){
     afv->visit_ImageFile(this);
 }

@@ -13,5 +13,5 @@ public:
     virtual std::string getName() = 0;
     virtual ~AbstractFile() = default;
     virtual void accept(AbstractFileVisitor*) = 0;
-
+    virtual AbstractFile * clone (std::string) = 0;
 };

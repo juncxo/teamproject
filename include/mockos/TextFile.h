@@ -6,6 +6,7 @@
 
 class TextFile : public AbstractFile {
 public:
+    TextFile();
     TextFile(std::string);
     virtual std::string getName();
     virtual unsigned int getSize();
@@ -13,6 +14,7 @@ public:
     virtual int write(std::vector<char>);
     virtual int append(std::vector<char>);
     virtual void accept(AbstractFileVisitor*);
+    virtual AbstractFile* clone(std::string);
 
 private:
     std::vector<char> contents;

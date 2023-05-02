@@ -14,6 +14,8 @@ void MacroCommand::displayInfo () {
     cout << "macro commmands executes several commands in order, it is invoked by typing in a sequence of commands." << endl;
 }
 
+/*
+
 std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
     vector <string> returnedVector;
     int numberOfWords = 1;
@@ -31,7 +33,12 @@ std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
     return returnedVector;
 }
 
+*/
+
 int MacroCommand::execute(std::string input) {
+
+
+    /*
     int finalSpaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
@@ -53,4 +60,5 @@ int MacroCommand::execute(std::string input) {
         }
     }
     return MacroSuccess;
+     */
 }

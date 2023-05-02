@@ -30,34 +30,19 @@ int CopyCommand::execute(std::string input) {
     }
 
 
-    string sourceFileName = input.substr(spaceIndex1 + 1, spaceIndex2 - 3);
+    string sourceFileName = input.substr(spaceIndex1 + 1, spaceIndex2 -3);
     string destFileName = input.substr(spaceIndex2 + 1, input.npos);
 
+
     AbstractFile* sourceFile = sfs->openFile(sourceFileName);
-    int dotIndex = 0;
-    for (int i = 0; i < sourceFileName.length(); i++) {
-        if (sourceFileName[i] == '.') {
-            dotIndex = i;
-        }
-    }
-    string extension = sourceFileName.substr(dotIndex+1, sourceFileName.npos);
-    AbstractFile* destFile;
-    string finalDestFileName;
-    if (extension == "txt") {
-        finalDestFileName = destFileName + ".txt";
-        destFile = new TextFile(finalDestFileName);
-    }
-    else if (extension == "img") {
-        finalDestFileName = destFileName + ".img";
-        destFile = new ImageFile(finalDestFileName);
-    }
-    else {
-        return InvalidFileExtension;
-    }
-    destFile->write(sourceFile->read());
-    sfs->addFile(finalDestFileName, destFile);
+
+    AbstractFile* destFile = sourceFile->clone(destFileName);
+
+
+    //destFile->write(sourceFile->read());
+    sfs->addFile(destFile->getName(), destFile);
     sfs->closeFile(sourceFile);
     sfs->closeFile(destFile);
-
     return CopySuccess;
+
 }
