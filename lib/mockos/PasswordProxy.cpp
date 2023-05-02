@@ -63,7 +63,7 @@ string PasswordProxy::getName(){
 
 AbstractFile* PasswordProxy::clone (string fileName) {
     PasswordProxy* newProxy =  new PasswordProxy(*this);
-    newProxy->protectedFile = this->protectedFile;
+    newProxy->protectedFile = protectedFile->clone(fileName);
     newProxy->password = this->password;
     return newProxy;
 }

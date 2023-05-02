@@ -52,7 +52,7 @@ std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
 */
 
 int MacroCommand::execute(std::string input) {
-    if (aps != 0) {
+    if (aps != nullptr) {
         return MacroFail;
     }
 
