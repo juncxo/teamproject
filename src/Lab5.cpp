@@ -9,6 +9,8 @@
 #include "mockos/TouchCommand.h"
 #include "mockos/CatCommand.h"
 #include "mockos/DisplayCommand.h"
+#include "mockos/CopyCommand.h"
+
 
 
 #include <vector>
@@ -25,6 +27,8 @@ int main (int argc, char * argv[]) {
     AbstractCommand* tc = new TouchCommand (sfs, sff);
     AbstractCommand* cat = new CatCommand (sfs);
     AbstractCommand* ds = new DisplayCommand (sfs);
+    AbstractCommand* cp = new CopyCommand (sfs);
+
 
     CommandPrompt* cmd = new CommandPrompt();
     TextFile* tf = new TextFile ("hello.txt");
@@ -53,6 +57,8 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("touch", tc);
     cmd->addCommand("cat", cat);
     cmd->addCommand("ds", ds);
+    cmd->addCommand("cp", cp);
+
 
     cmd->run();
     return 0;

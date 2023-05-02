@@ -1,10 +1,11 @@
 #pragma once
 #include "SimpleFileSystem.h"
 #include "AbstractCommand.h"
+#include "BasicDisplayVisitor.h"
 #include <string>
 
 enum DisplayErrors {
-    DisplaySuccess, DisplayFail
+    DisplaySuccess, InvalidFileType
 };
 class DisplayCommand : public AbstractCommand {
 public:

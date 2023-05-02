@@ -30,11 +30,26 @@ int DisplayCommand::execute(std::string input) {
             cout << file->read()[i];
         }
         cout << endl;
+        sfs->closeFile(file);
+
     }
     else {
         AbstractFile* file = sfs->openFile(fileName);
+        int dotIndex = 0;
+        for (int i = 0; i < fileName.length(); i++) {
+            if (fileName[i] == '.') {
+                dotIndex = i;
+                break;
+            }
+        }
+        string extension = fileName.substr (dotIndex+1, fileName.npos);
+
+        AbstractFileVisitor* bdv = new BasicDisplayVisitor;
+        file->accept(bdv);
 
         cout << endl;
+        sfs->closeFile(file);
+
     }
     return DisplaySuccess;
 }
