@@ -74,8 +74,6 @@ int MacroCommand::execute(std::string input) {
         return sizeNotEqualFailure;
     }
     for (int i = 0; i < commands.size(); ++i) {
-      //  commands(execute->aps[i]);
+       commands[i]->execute(listOfCommands[i]);
     }
-
-
 }

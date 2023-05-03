@@ -1,8 +1,9 @@
-//
-// Created by Andy Cho on 5/3/23.
-//
+#pragma once
+#include <vector>
+#include <string>
+#include "mockos/AbstractParsingStrategy.h"
 
-#ifndef MOCKOS_EDITDISPLAY_H
-#define MOCKOS_EDITDISPLAY_H
-
-#endif //MOCKOS_EDITDISPLAY_H
+class EditDisplay : public AbstractParsingStrategy {
+public:
+    virtual std::vector <std::string> parse (std::string) override;
+};

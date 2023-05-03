@@ -2,13 +2,19 @@
 #include "mockos/ImageFile.h"
 #include "mockos/AbstractFile.h"
 #include "mockos/SimpleFileSystem.h"
+#include "mockos/AbstractFileSystem.h"
+
 #include "mockos/SimpleFileFactory.h"
 #include "mockos/CommandPrompt.h"
 #include "mockos/LSCommand.h"
 #include "mockos/RemoveCommand.h"
 #include "mockos/TouchCommand.h"
+#include "mockos/RenameParsingStrategy.h"
+
 #include "mockos/CatCommand.h"
 #include "mockos/DisplayCommand.h"
+#include "mockos/MacroCommand.h"
+
 #include "mockos/CopyCommand.h"
 
 
@@ -19,6 +25,8 @@
 using namespace std;
 
 int main (int argc, char * argv[]) {
+    AbstractFileSystem* afs = new SimpleFileSystem();
+
     SimpleFileSystem* sfs = new SimpleFileSystem();
     SimpleFileFactory* sff = new SimpleFileFactory();
 
@@ -28,6 +36,9 @@ int main (int argc, char * argv[]) {
     AbstractCommand* cat = new CatCommand (sfs);
     AbstractCommand* ds = new DisplayCommand (sfs);
     AbstractCommand* cp = new CopyCommand (sfs);
+    AbstractParsingStrategy* rn = new RenameParsingStrategy (afs);
+
+
 
 
     CommandPrompt* cmd = new CommandPrompt();

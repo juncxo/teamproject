@@ -1,45 +1,29 @@
 
 #include <string>
-#include "mockos/AbstractParsingStrategy.h"
+#include "mockos/RenameParsingStrategy.h"
+
 #include <iostream>
 #include <sstream>
 using namespace std;
 
-/*
-std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
+
+std::vector<std::string> RenameParsingStrategy::parse (std::string fileNames) {
 
     vector <string> returnedVector;
-    int numberOfWords = 1;
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == ' ') {
-            numberOfWords++;
-        }
-    }
-    int spaceIndex1 = 0;
-    int spaceIndex2 = 0;
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == ' ') {
-            spaceIndex1 = i;
+    int spaceIndex = 0;
+    for (int i = 0; i < fileNames.length(); i++) {
+        if (fileNames[i] == ' ') {
+            spaceIndex = i;
             break;
         }
     }
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == ' ') {
-            spaceIndex2 = i;
-        }
-    }
 
-    string sourceFileName = str.substr(spaceIndex1 + 1, spaceIndex2 - 3);
-    string destFileName = str.substr(spaceIndex2 + 1, str.npos);
+    string originalName = fileNames.substr(0, spaceIndex - 1);
+    string newName = fileNames.substr(spaceIndex + 1, fileNames.npos);
 
-    istringstream iss (str);
-    for (int i = 0; i < numberOfWords; i++) {
-        string vectorValue;
-        iss >> vectorValue;
-        returnedVector.push_back (vectorValue);
-    }
+    returnedVector.push_back (fileNames);
+    returnedVector.push_back (originalName);
     return returnedVector;
 
-
 }
-*/
+
