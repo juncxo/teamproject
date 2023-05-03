@@ -8,7 +8,7 @@
 enum MacroErrors {
     MacroSuccess, MacroFail, sizeNotEqualFailure
 };
-class MacroCommand : public AbstractCommand, AbstractParsingStrategy {
+class MacroCommand : public AbstractCommand {
 public:
     MacroCommand(AbstractFileSystem*);
     ~MacroCommand();

@@ -30,7 +30,7 @@ int CopyCommand::execute(std::string input) {
     }
 
 
-    string sourceFileName = input.substr(spaceIndex1 + 1, spaceIndex2 -3);
+    string sourceFileName = input.substr(spaceIndex1 + 1, spaceIndex2 - spaceIndex1 - 1);
     string destFileName = input.substr(spaceIndex2 + 1, input.npos);
 
 

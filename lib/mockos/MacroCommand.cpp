@@ -52,9 +52,9 @@ std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
 */
 
 int MacroCommand::execute(std::string input) {
-    if (aps != nullptr) {
+    /*if (aps != nullptr) {
         return MacroFail;
-    }
+    }*/
 
 
 /*
@@ -68,13 +68,22 @@ int MacroCommand::execute(std::string input) {
     string inputWithoutTheFileName = input.substr(0, finalSpaceIndex-1);
     string fileName = input.substr(finalSpaceIndex+1, input.npos);
 */
+    int firstSpace = 0;
+    for (int i = 0; i < input.length(); i++) {
+        if (input[i] == ' ') {
+            firstSpace = i;
+            break;
+        }
+    }
+    string inputWithoutTheCommand = input.substr(firstSpace+1, input.npos);
+    vector <string> listOfCommands = aps->parse(inputWithoutTheCommand);
 
-    vector <string> listOfCommands = aps->parse(input);
     if (listOfCommands.size() != commands.size()) {
         return sizeNotEqualFailure;
     }
     for (int i = 0; i < commands.size(); ++i) {
-       commands[i]->execute(listOfCommands[i]);
+
+       commands[i]->execute("command " + listOfCommands[i]);
     }
     return MacroSuccess;
 }

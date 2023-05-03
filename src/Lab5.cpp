@@ -34,14 +34,12 @@ int main (int argc, char * argv[]) {
     AbstractCommand* cat = new CatCommand (afs);
     AbstractCommand* ds = new DisplayCommand (afs);
     AbstractCommand* cp = new CopyCommand (afs);
-    /*MacroCommand* macro = new MacroCommand(afs);
+    MacroCommand* macro = new MacroCommand(afs);
 
-    macro->addCommand(tc);
-    macro->addCommand(cat);
-    AbstractParsingStrategy* rn = new RenameParsingStrategy (afs);
-    macro->setParseStrategy(rn);*/
-
-
+    macro->addCommand(cp);
+    macro->addCommand(rm);
+    AbstractParsingStrategy* rn = new RenameParsingStrategy ();
+    macro->setParseStrategy(rn);
 
 
 
@@ -73,7 +71,7 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("ds", ds);
     cmd->addCommand("cp", cp);
     cmd->addCommand("touch", tc);
-   //cmd->addCommand("rn", macro);
+    cmd->addCommand("rn", macro);
 
     cmd->run();
     return 0;
