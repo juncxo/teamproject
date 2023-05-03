@@ -36,7 +36,7 @@ int main (int argc, char * argv[]) {
     AbstractCommand* cat = new CatCommand (sfs);
     AbstractCommand* ds = new DisplayCommand (sfs);
     AbstractCommand* cp = new CopyCommand (sfs);
-    AbstractParsingStrategy* rn = new RenameParsingStrategy (afs);
+   // AbstractParsingStrategy* rn = new RenameParsingStrategy (afs);
 
 
 
