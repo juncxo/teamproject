@@ -19,5 +19,5 @@ target_link_libraries(studio20 mockos)
 add_executable(studio21 Studio21.cpp)
 target_link_libraries(studio21 mockos)
 
-add_executable(lab5 Lab5.cpp)
+add_executable(lab5 Lab5.cpp ../include/mockos/EditDisplay.h)
 target_link_libraries(lab5 mockos)
