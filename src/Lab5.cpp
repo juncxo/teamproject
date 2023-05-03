@@ -10,6 +10,8 @@
 #include "mockos/RemoveCommand.h"
 #include "mockos/TouchCommand.h"
 #include "mockos/RenameParsingStrategy.h"
+#include "mockos/EditDisplay.h"
+
 
 #include "mockos/CatCommand.h"
 #include "mockos/DisplayCommand.h"
@@ -35,12 +37,20 @@ int main (int argc, char * argv[]) {
     AbstractCommand* ds = new DisplayCommand (afs);
     AbstractCommand* cp = new CopyCommand (afs);
     MacroCommand* macro = new MacroCommand(afs);
+    MacroCommand* macro2 = new MacroCommand(afs);
+
 
     macro->addCommand(cp);
     macro->addCommand(rm);
+
+    macro2->addCommand(cat);
+    macro2->addCommand(ds);
+
     AbstractParsingStrategy* rn = new RenameParsingStrategy ();
     macro->setParseStrategy(rn);
 
+    AbstractParsingStrategy* cd = new EditDisplay ();
+    macro2->setParseStrategy (cd);
 
 
     CommandPrompt* cmd = new CommandPrompt();
@@ -72,6 +82,7 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("cp", cp);
     cmd->addCommand("touch", tc);
     cmd->addCommand("rn", macro);
+    cmd->addCommand("cd", macro2);
 
     cmd->run();
     return 0;

@@ -10,6 +10,7 @@ using namespace std;
 std::vector<std::string> EditDisplay::parse (std::string fileName) {
     vector <std::string> returnedVector;
     returnedVector.push_back (fileName);
+    returnedVector.push_back (fileName);
     return returnedVector;
 }
 
