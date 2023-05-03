@@ -30,7 +30,7 @@ PasswordProxy::~PasswordProxy() {
 string PasswordProxy::passwordPrompt() {
     string input;
     cout << "Enter a password" << endl;
-    cin >> input;
+    getline(cin, input);
     return input;
 
 }

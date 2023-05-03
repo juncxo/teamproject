@@ -6,7 +6,7 @@
 using namespace std;
 
 
-LSCommand::LSCommand(SimpleFileSystem* parameter) {
+LSCommand::LSCommand(AbstractFileSystem* parameter) {
     longestFileName = 0;
     longestFileType = 0;
     sfs = parameter;

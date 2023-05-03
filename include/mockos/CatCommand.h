@@ -8,9 +8,9 @@ enum CatErrors {
 };
 class CatCommand : public AbstractCommand {
 public:
-    CatCommand(SimpleFileSystem*);
+    CatCommand(AbstractFileSystem*);
     virtual int execute(std::string) override;
     virtual void displayInfo() override;
 private:
-    SimpleFileSystem* sfs;
+    AbstractFileSystem* sfs;
 };

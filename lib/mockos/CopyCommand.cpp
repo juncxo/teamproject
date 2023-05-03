@@ -6,8 +6,8 @@
 using namespace std;
 
 
-CopyCommand::CopyCommand(SimpleFileSystem *parameter) {
-    sfs = parameter;
+CopyCommand::CopyCommand(AbstractFileSystem* parameter) {
+    afs = parameter;
 }
 
 void CopyCommand::displayInfo () {
@@ -34,17 +34,17 @@ int CopyCommand::execute(std::string input) {
     string destFileName = input.substr(spaceIndex2 + 1, input.npos);
 
 
-    AbstractFile* sourceFile = sfs->openFile(sourceFileName);
+    AbstractFile* sourceFile = afs->openFile(sourceFileName);
     AbstractFile* destFile = sourceFile->clone(destFileName);
 
     //destFile->write(sourceFile->read());
-    if (sfs->addFile(destFile->getName(), destFile) != 0) { //adding failed
+    if (afs->addFile(destFile->getName(), destFile) != 0) { //adding failed
         delete sourceFile;
         delete destFile;
         return failedToAddCopy;
     }
-    sfs->closeFile(sourceFile);
-    sfs->closeFile(destFile);
+    afs->closeFile(sourceFile);
+    afs->closeFile(destFile);
     return CopySuccess;
 
 }

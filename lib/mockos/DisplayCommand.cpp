@@ -6,7 +6,7 @@
 using namespace std;
 
 
-DisplayCommand::DisplayCommand(SimpleFileSystem *parameter) {
+DisplayCommand::DisplayCommand(AbstractFileSystem *parameter) {
     sfs = parameter;
 }
 

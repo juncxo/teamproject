@@ -8,9 +8,9 @@ enum CopyErrors {
 };
 class CopyCommand : public AbstractCommand {
 public:
-    CopyCommand(SimpleFileSystem*);
+    CopyCommand(AbstractFileSystem*);
     virtual int execute(std::string) override;
     virtual void displayInfo() override;
 private:
-    SimpleFileSystem* sfs;
+    AbstractFileSystem* afs;
 };

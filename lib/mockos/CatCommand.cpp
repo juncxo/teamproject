@@ -6,7 +6,7 @@
 using namespace std;
 
 
-CatCommand::CatCommand(SimpleFileSystem *parameter) {
+CatCommand::CatCommand(AbstractFileSystem *parameter) {
 
     sfs = parameter;
 }

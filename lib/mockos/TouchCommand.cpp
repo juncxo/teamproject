@@ -30,7 +30,7 @@ int TouchCommand::execute(std::string input) {
         AbstractFile *createdFile = touchFactory->createFile(fileNameWithoutTheDashP);
         string password;
         cout << "Enter a password to protect the file: " << endl;
-        cin >> password;
+        getline(cin, password);
 
 
         if (createdFile != nullptr) {

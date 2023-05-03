@@ -5,7 +5,7 @@
 using namespace std;
 
 
-RemoveCommand::RemoveCommand(SimpleFileSystem* parameter) {
+RemoveCommand::RemoveCommand(AbstractFileSystem* parameter) {
     sfs = parameter;
 }
 

@@ -26,17 +26,21 @@ using namespace std;
 
 int main (int argc, char * argv[]) {
     AbstractFileSystem* afs = new SimpleFileSystem();
+    AbstractFileFactory* aff = new SimpleFileFactory();
 
-    SimpleFileSystem* sfs = new SimpleFileSystem();
-    SimpleFileFactory* sff = new SimpleFileFactory();
+    AbstractCommand* ls = new LSCommand (afs);
+    AbstractCommand* rm = new RemoveCommand (afs);
+    AbstractCommand* tc = new TouchCommand (afs, aff);
+    AbstractCommand* cat = new CatCommand (afs);
+    AbstractCommand* ds = new DisplayCommand (afs);
+    AbstractCommand* cp = new CopyCommand (afs);
+    /*MacroCommand* macro = new MacroCommand(afs);
 
-    AbstractCommand* ls = new LSCommand (sfs);
-    AbstractCommand* rm = new RemoveCommand (sfs);
-    AbstractCommand* tc = new TouchCommand (sfs, sff);
-    AbstractCommand* cat = new CatCommand (sfs);
-    AbstractCommand* ds = new DisplayCommand (sfs);
-    AbstractCommand* cp = new CopyCommand (sfs);
-   // AbstractParsingStrategy* rn = new RenameParsingStrategy (afs);
+    macro->addCommand(tc);
+    macro->addCommand(cat);
+    AbstractParsingStrategy* rn = new RenameParsingStrategy (afs);
+    macro->setParseStrategy(rn);*/
+
 
 
 
@@ -48,10 +52,10 @@ int main (int argc, char * argv[]) {
     TextFile* tf2 = new TextFile ("hi.txt");
 
 
-    sfs->addFile("hello.txt", tf);
-    sfs->addFile("image1.img", image);
-    sfs->addFile("image2.img", image2);
-    sfs->addFile ("hi.txt", tf2);
+    afs->addFile("hello.txt", tf);
+    afs->addFile("image1.img", image);
+    afs->addFile("image2.img", image2);
+    afs->addFile ("hi.txt", tf2);
     vector <char> vc = {'a', 'b', 'c', 'd', 'e'};
     vector <char> imageContents = {'X', ' ', 'X', ' ', 'X', ' ', 'X', ' ', 'X', '3'};
 
@@ -61,7 +65,7 @@ int main (int argc, char * argv[]) {
     // sfs->openFile ("image1.img");
   //  sfs->openFile ("image2.img");
    // sfs->openFile ("hi.txt");
-    cmd->setFileSystem(sfs);
+    cmd->setFileSystem(afs);
     cmd->addCommand("ls", ls);
     cmd->addCommand("-m", ls);
     cmd->addCommand("rm", rm);
@@ -69,6 +73,7 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("ds", ds);
     cmd->addCommand("cp", cp);
     cmd->addCommand("touch", tc);
+   //cmd->addCommand("rn", macro);
 
     cmd->run();
     return 0;

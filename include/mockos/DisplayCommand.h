@@ -9,9 +9,9 @@ enum DisplayErrors {
 };
 class DisplayCommand : public AbstractCommand {
 public:
-    DisplayCommand(SimpleFileSystem*);
+    DisplayCommand(AbstractFileSystem*);
     virtual int execute(std::string) override;
     virtual void displayInfo() override;
 private:
-    SimpleFileSystem* sfs;
+    AbstractFileSystem* sfs;
 };

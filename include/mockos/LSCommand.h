@@ -8,11 +8,11 @@ enum LSErrors {
 };
 class LSCommand : public AbstractCommand{
 public:
-    LSCommand(SimpleFileSystem*);
+    LSCommand(AbstractFileSystem*);
     virtual int execute(std::string) override;
     virtual void displayInfo() override;
 private:
     int longestFileName;
     int longestFileType;
-    SimpleFileSystem* sfs;
+    AbstractFileSystem* sfs;
 };

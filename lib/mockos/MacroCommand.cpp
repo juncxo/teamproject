@@ -76,4 +76,5 @@ int MacroCommand::execute(std::string input) {
     for (int i = 0; i < commands.size(); ++i) {
        commands[i]->execute(listOfCommands[i]);
     }
+    return MacroSuccess;
 }
