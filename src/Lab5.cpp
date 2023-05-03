@@ -65,11 +65,10 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("ls", ls);
     cmd->addCommand("-m", ls);
     cmd->addCommand("rm", rm);
-    cmd->addCommand("touch", tc);
     cmd->addCommand("cat", cat);
     cmd->addCommand("ds", ds);
     cmd->addCommand("cp", cp);
-
+    cmd->addCommand("touch", tc);
 
     cmd->run();
     return 0;
