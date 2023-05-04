@@ -56,7 +56,6 @@ int MacroCommand::execute(std::string input) {
         return MacroFail;
     }*/
 
-
 /*
     int finalSpaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
@@ -75,15 +74,15 @@ int MacroCommand::execute(std::string input) {
             break;
         }
     }
-    string inputWithoutTheCommand = input.substr(firstSpace+1, input.npos);
-    vector <string> listOfCommands = aps->parse(inputWithoutTheCommand);
+    //string inputWithoutTheCommand = input.substr(firstSpace+1, input.npos);
+    vector <string> listOfCommands = aps->parse(input);
 
     if (listOfCommands.size() != commands.size()) {
         return sizeNotEqualFailure;
     }
     for (int i = 0; i < commands.size(); ++i) {
 
-       commands[i]->execute("command " + listOfCommands[i]);
+       commands[i]->execute(listOfCommands[i]);
     }
     return MacroSuccess;
 }

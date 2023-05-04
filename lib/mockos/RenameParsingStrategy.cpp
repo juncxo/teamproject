@@ -10,12 +10,16 @@ using namespace std;
 std::vector<std::string> RenameParsingStrategy::parse (std::string fileNames) {
 
     vector <string> returnedVector;
+
     int spaceIndex = 0;
     for (int i = 0; i < fileNames.length(); i++) {
         if (fileNames[i] == ' ') {
             spaceIndex = i;
             break;
         }
+    }
+    if(spaceIndex == 0){
+        return returnedVector;
     }
 
     string originalName = fileNames.substr(0, spaceIndex);

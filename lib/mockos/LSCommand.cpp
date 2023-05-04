@@ -17,7 +17,7 @@ void LSCommand::displayInfo () {
 }
 
 int LSCommand::execute(std::string input) {
-    if (input == "ls"){
+    if (input == ""){
         //get the max length
         int index1 = 0;
         for (string str : sfs->getFileNames()) {
@@ -51,7 +51,7 @@ int LSCommand::execute(std::string input) {
         }
         cout << endl;
     }
-    else if (input == "ls -m") {
+    else if (input == "-m") {
 
 //awagw
         //print file info

@@ -23,15 +23,19 @@ int CopyCommand::execute(std::string input) {
             break;
         }
     }
+    /*
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
             spaceIndex2 = i;
         }
     }
+     */
 
-
-    string sourceFileName = input.substr(spaceIndex1 + 1, spaceIndex2 - spaceIndex1 - 1);
-    string destFileName = input.substr(spaceIndex2 + 1, input.npos);
+    if(spaceIndex1 == 0){
+        return 5;
+    }
+    string sourceFileName = input.substr(0,  spaceIndex1);
+    string destFileName = input.substr(spaceIndex1 + 1, input.npos);
 
 
     AbstractFile* sourceFile = afs->openFile(sourceFileName);
@@ -39,12 +43,11 @@ int CopyCommand::execute(std::string input) {
 
     //destFile->write(sourceFile->read());
     if (afs->addFile(destFile->getName(), destFile) != 0) { //adding failed
-        delete sourceFile;
+        afs->closeFile(sourceFile);
         delete destFile;
         return failedToAddCopy;
     }
     afs->closeFile(sourceFile);
-    afs->closeFile(destFile);
     return CopySuccess;
 
 }

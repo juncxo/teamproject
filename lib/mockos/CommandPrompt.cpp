@@ -51,6 +51,7 @@ int CommandPrompt::run() {
             what[i] = input[i];
         }*/
 
+
         if (input == "q") {
             return userQuit;
         } else if (input == "help") {
@@ -68,13 +69,13 @@ int CommandPrompt::run() {
 
             if (oneWordLong) { // 1 word long
                 if (commandMap.find(input) != commandMap.end()) {
-                    if (commandMap[input]->execute(input) != 0) { //returns an error
+                    if (commandMap[input]->execute("") != 0) { //returns an error
                         cout << "Command failed" << endl;
                     }
 
                 }
                 else {
-                    cout << "HERE" << endl;
+                    //cout << "HERE" << endl;
                     cout << "Command does not exist." << endl;
                 }
             } else { // longer than 1 word
@@ -98,7 +99,8 @@ int CommandPrompt::run() {
                     }
                 }
                 else if (commandMap.find(word1) != commandMap.end()) { //word1 is in the command map
-                    if (commandMap[word1]->execute(input) != 0) {
+                    string param = input.substr(indexSpace+1, input.npos);
+                    if (commandMap[word1]->execute(param) != 0) {
                         cout << "Command failed" << endl;
                     }
                 }

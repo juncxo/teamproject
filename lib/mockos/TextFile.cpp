@@ -48,6 +48,7 @@ vector<char> TextFile::read () {
 AbstractFile* TextFile::clone (string fileName) {
     TextFile* newFile =  new TextFile(*this);
     newFile->name = fileName + ".txt";
+    newFile->contents = contents;
     return newFile;
 }
 

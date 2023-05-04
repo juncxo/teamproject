@@ -10,7 +10,7 @@ on Aranna's computer, although Luke did a good amount of the typing.
 Lab: First half of the lab, Aranna and Luke focused on typing the code. Second half, Andy and Luke focused on typing. 
 Although not everyone was able to be around the whole time, whole group met everyday to work, including office hours.
 Andy spent most amount of time at office hours. Documentation and editing files was done by Aranna. A significant amount 
-of the solutions ideas for the problems was solved by Luke. There isn't a specific method or file that anyoen specifically
+of the solutions ideas for the problems was proposed by Luke. There isn't a specific method or file that anyone specifically
 did alone. 
 
 Bugs:
@@ -42,5 +42,8 @@ in the way that the parameter's first word is the command itself followed by res
 we passed in "command " in our execute. This then helped the functions behave as it is supposed to.
 9. Implementing the additional macrocommand, the program kept failing. After running the debugger, we noticed that it was 
 due to EditDisplay::parse() returning a vector of one size while it needed to return 2 because it's supposed to call execute
-twice using that. So in the parse, we increased the size of the vector returned and the function behvaed as desired.
+twice using that. So in the parse, we increased the size of the vector returned and the function behaved as desired.
+10. However, our previous logic for all the method was giving issues in the testing phase. So we had to go back to all 
+our methods to rework the logic for the inputs we were passing in. After reworking this, the run() function now passed in 
+the input after the command and not the whole input. 
 

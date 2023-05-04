@@ -75,7 +75,7 @@ int main (int argc, char * argv[]) {
    // sfs->openFile ("hi.txt");
     cmd->setFileSystem(afs);
     cmd->addCommand("ls", ls);
-    cmd->addCommand("-m", ls);
+    cmd->addCommand("ls -m", ls);
     cmd->addCommand("rm", rm);
     cmd->addCommand("cat", cat);
     cmd->addCommand("ds", ds);

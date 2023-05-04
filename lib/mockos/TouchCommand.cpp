@@ -16,6 +16,7 @@ void TouchCommand::displayInfo() {
 }
 
 int TouchCommand::execute(std::string input) {
+    /*
     int spaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
@@ -23,7 +24,8 @@ int TouchCommand::execute(std::string input) {
             break;
         }
     }
-    string fileName = input.substr(spaceIndex+1, input.npos);
+     */
+    string fileName = input; //.substr(spaceIndex+1, input.npos);
     if (fileName.substr(fileName.size() - 3) == " -p") {
 
         string fileNameWithoutTheDashP = fileName.substr(0, fileName.size() - 3);

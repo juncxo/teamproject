@@ -14,14 +14,17 @@ void RemoveCommand::displayInfo () {
 }
 
 int RemoveCommand::execute(std::string input) {
+    /*
     //find space
     int spaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
             spaceIndex = i;
+            break;
         }
     }
-    string fileName = input.substr(spaceIndex+1, string::npos);
+     */
+    string fileName = input; //.substr(spaceIndex+1, string::npos);
     if (sfs->deleteFile(fileName) != 0) {
         return unableToRemove;
     }

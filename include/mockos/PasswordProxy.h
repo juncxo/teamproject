@@ -19,9 +19,9 @@ public:
     virtual int append(std::vector<char>);
     virtual void accept(AbstractFileVisitor*);
     virtual AbstractFile* clone(std::string);
-    int encryptMod131 (int);
-    int twoToThe (int) ;
-    int decryptMod131 (int);
+//    int encryptMod131 (int);
+//    int twoToThe (int) ;
+//    int decryptMod131 (int);
 
 protected:
     std::string passwordPrompt();

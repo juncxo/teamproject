@@ -15,6 +15,7 @@ void DisplayCommand::displayInfo () {
 }
 
 int DisplayCommand::execute(std::string input) {
+   /*
     int spaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
@@ -22,10 +23,11 @@ int DisplayCommand::execute(std::string input) {
             break;
         }
     }
-    string fileName = input.substr(spaceIndex+1, input.npos);
+    */
+    string fileName = input; //.substr(spaceIndex+1, input.npos);
     if (fileName.substr(fileName.size() - 3) == " -d") {
-        string fileNameWithoutTheDashP = fileName.substr(0, fileName.size() - 3);
-        AbstractFile* file = sfs->openFile(fileNameWithoutTheDashP);
+        string fileNameWithoutTheDashD = fileName.substr(0, fileName.size() - 3);
+        AbstractFile* file = sfs->openFile(fileNameWithoutTheDashD);
         for (int i = 0; i < file->read().size(); i++) {
             cout << file->read()[i];
         }
@@ -35,6 +37,8 @@ int DisplayCommand::execute(std::string input) {
     }
     else {
         AbstractFile* file = sfs->openFile(fileName);
+
+        /*
         int dotIndex = 0;
         for (int i = 0; i < fileName.length(); i++) {
             if (fileName[i] == '.') {
@@ -43,11 +47,12 @@ int DisplayCommand::execute(std::string input) {
             }
         }
         string extension = fileName.substr (dotIndex+1, fileName.npos);
-
-        AbstractFileVisitor* bdv = new BasicDisplayVisitor;
+        */
+        AbstractFileVisitor* bdv = new BasicDisplayVisitor();
         file->accept(bdv);
 
         cout << endl;
+        delete bdv;
         sfs->closeFile(file);
 
     }

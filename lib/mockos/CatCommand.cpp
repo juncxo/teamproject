@@ -7,7 +7,6 @@ using namespace std;
 
 
 CatCommand::CatCommand(AbstractFileSystem *parameter) {
-
     sfs = parameter;
 }
 
@@ -16,6 +15,7 @@ void CatCommand::displayInfo () {
 }
 
 int CatCommand::execute(std::string input) {
+    /*
     int spaceIndex = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
@@ -23,11 +23,15 @@ int CatCommand::execute(std::string input) {
             break;
         }
     }
-    string fileName = input.substr(spaceIndex+1, input.npos);
+     */
+    string fileName = input; //.substr(spaceIndex+1, input.npos);
     if (fileName.substr(fileName.size() - 3) == " -a") {
         string fileNameWithoutTheDashP = fileName.substr(0, fileName.size() - 3);
         AbstractFile* file = sfs->openFile(fileNameWithoutTheDashP);
-        file->read();
+        for (int i = 0; i < file->read().size(); i++) {
+            cout << file->read()[i];
+        }
+        //file->read();
         cout << endl;
         cout << "Enter new data into the file (enter :wq or :q to quit with or without saving, respectively). " <<endl;
         vector<string> savedInput;
@@ -43,6 +47,8 @@ int CatCommand::execute(std::string input) {
                         savedCharInput.push_back (savedInput[i][j]);
                     }
                 }
+
+                savedCharInput.pop_back();
                 file->append(savedCharInput);
                 break;
             }
@@ -69,7 +75,8 @@ int CatCommand::execute(std::string input) {
                         savedCharInput.push_back (savedInput[i][j]);
                     }
                 }
-                file->write(savedCharInput);
+                savedCharInput.pop_back();
+                file->write(savedCharInput );
                 break;
             }
             else {

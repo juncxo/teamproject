@@ -23,7 +23,7 @@ int ImageFile::write(vector <char> vc) {
    if (vc.size() - 1 != imageSize * imageSize) {
       imageContents.clear();
       imageSize = 0;
-      cout << "Test " << endl;
+      //cout << "Test " << endl;
       return sizeMismatchError;
   }
     for (int i = 0; i < imageSize * imageSize; i++) {
@@ -49,6 +49,7 @@ vector<char> ImageFile::read () {
 AbstractFile* ImageFile::clone (string fileName) {
     ImageFile* newFile =  new ImageFile(*this);
     newFile->imageName = fileName + ".img";
+    newFile->imageContents = imageContents;
     return newFile;
 }
 
