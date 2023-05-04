@@ -40,4 +40,7 @@ execute on the list of commands that parsing returned.
 8. There was error afterwards as the execute was being called with the files names but because our execute are all implement
 in the way that the parameter's first word is the command itself followed by rest of the input. So to tackle this error, 
 we passed in "command " in our execute. This then helped the functions behave as it is supposed to.
+9. Implementing the additional macrocommand, the program kept failing. After running the debugger, we noticed that it was 
+due to EditDisplay::parse() returning a vector of one size while it needed to return 2 because it's supposed to call execute
+twice using that. So in the parse, we increased the size of the vector returned and the function behvaed as desired.
 
