@@ -85,12 +85,6 @@ std::string CommandPrompt::prompt() {
 int CommandPrompt::run() {
     while (true) {
         string input = prompt();
-        /*string * what = new string[input.size()];
-        for (int i=0; i < input.size(); i++) {
-            what[i] = input[i];
-        }*/
-
-
         if (input == "q") {
             return userQuit;
         } else if (input == "help") {
@@ -109,7 +103,7 @@ int CommandPrompt::run() {
             //Checks if the input is 1 word long and invokes/prints the corresponding function/message
             if (oneWordLong) {
                 if (commandMap.find(input) != commandMap.end()) {
-                    if (commandMap[input]->execute("") != 0) {
+                    if (commandMap[input]->execute("") != commandSuccess) {
                         cout << "Command failed" << endl;
                     }
                 }
@@ -133,18 +127,18 @@ int CommandPrompt::run() {
                         cout << "Command does not exist." << endl;
                     }
                 }
-                else if (commandMap.find(word1) != commandMap.end()) { //word1 is in the command map
+                //word1 exists in the command map
+                else if (commandMap.find(word1) != commandMap.end()) {
                     string param = input.substr(indexSpace+1, input.npos);
-                    if (commandMap[word1]->execute(param) != 0) {
+                    if (commandMap[word1]->execute(param) != commandSuccess) {
                         cout << "Command failed" << endl;
                     }
                 }
                 else {
                     //truncates the user input to extract the command word from the input string
                     string truncatedInput = input.substr(indexSpace+1, string::npos);
-                    //TODO: check if the logic is correct
                     if (commandMap.find(truncatedInput) != commandMap.end()) {
-                        if (commandMap[truncatedInput]->execute(input) != 0) {
+                        if (commandMap[truncatedInput]->execute(input) != commandSuccess) {
                             cout << "Command failed" << endl;
                         }
                     }

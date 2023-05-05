@@ -20,6 +20,7 @@ void DisplayCommand::displayInfo () {
     cout << "ds displays the file's contents, ds can be invoked by calling the command: ds" << endl;
 }
 
+
 /*
  * The function accounts for whether to display formatted text or not. If for formatted, then the function prints the content
  * formatted by creating a BasicDisplayVisitor() object to call accept on which calls the corresponding method content displayer.

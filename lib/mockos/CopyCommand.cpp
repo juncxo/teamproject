@@ -46,7 +46,7 @@ int CopyCommand::execute(std::string input) {
     AbstractFile* destFile = sourceFile->clone(destFileName);
 
     //if failure to add the new file, we close the original, delete the file cloned and return error to indicate failure to copy
-    if (afs->addFile(destFile->getName(), destFile) != 0) { //adding failed
+    if (afs->addFile(destFile->getName(), destFile) != CopySuccess) {
         afs->closeFile(sourceFile);
         delete destFile;
         return failedToAddCopy;

@@ -3,7 +3,12 @@
 #include <string>
 #include "AbstractFile.h"
 
-
+/*
+ * Enumeration for TextFile
+ */
+enum text{
+    textSucess
+};
 class TextFile : public AbstractFile {
 public:
     TextFile();

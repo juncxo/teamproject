@@ -3,11 +3,14 @@
 #include <string>
 #include "AbstractFile.h"
 
-
-enum imageReturns {imageSuccess,
-        sizeMismatchError,
-        incorrectPixelError,
-        appendNotSupportedError
+/*
+ * Enumeration for ImageFile class
+ */
+enum imageReturns {
+    imageSuccess,
+    sizeMismatchError,
+    incorrectPixelError,
+    appendNotSupportedError
 };
 
 class ImageFile : public AbstractFile {

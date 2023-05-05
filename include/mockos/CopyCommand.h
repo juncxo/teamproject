@@ -3,6 +3,10 @@
 #include "AbstractCommand.h"
 #include <string>
 
+
+/*
+ * Enumeration for CopyCommand class
+ */
 enum CopyErrors {
     CopySuccess, InvalidFileExtension, failedToAddCopy, fileNonExist
 };

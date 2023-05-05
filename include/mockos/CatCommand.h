@@ -3,6 +3,10 @@
 #include "AbstractCommand.h"
 #include <string>
 
+
+/*
+ * Enumeration for the CatCommmand class
+ */
 enum CatErrors {
     Catsuccess,
     Catfail,

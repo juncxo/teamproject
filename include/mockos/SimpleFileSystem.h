@@ -4,6 +4,9 @@
 #include <set>
 #include "AbstractFileSystem.h"
 
+/*
+ * Enumeration for the SimpleFileSysten class
+ */
 enum SFSErrors{
     SFSSuccess,
     fileExists,
@@ -13,6 +16,8 @@ enum SFSErrors{
     fileDoesNotExist,
     invalidExtension
 };
+
+
 class SimpleFileSystem : public AbstractFileSystem{
 public:
     virtual int addFile(std::string, AbstractFile *);

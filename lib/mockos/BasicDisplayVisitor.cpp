@@ -15,11 +15,8 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile * image) {
     vector<char> imgContent = image->read();
     for (int y = imageSize - 1; y >= 0; y--) {
         for (int x = 0; x < imageSize; x++) {
-
            cout << imgContent[y * imageSize + x];
-
         }
-
         cout << endl;
     }
     cout << endl;

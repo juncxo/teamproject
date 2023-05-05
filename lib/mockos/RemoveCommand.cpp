@@ -21,10 +21,10 @@ void RemoveCommand::displayInfo () {
 
 /*
  * The function deletes the file that's name is passed in the parameter
- * Returns corrosponding enum to indicate failure or success of the function
+ * Returns corresponding enum to indicate failure or success of the function
  */
 int RemoveCommand::execute(std::string fileName) {
-    if (sfs->deleteFile(fileName) != 0) {
+    if (sfs->deleteFile(fileName) != removeSuccess) {
         return unableToRemove;
     }
     return removeSuccess;

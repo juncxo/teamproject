@@ -68,7 +68,6 @@ int LSCommand::execute(std::string input) {
             }
             iterator++;
         }
-
     }
     return LSsuccess;
 }

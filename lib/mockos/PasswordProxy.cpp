@@ -5,7 +5,7 @@
 using namespace std;
 
 PasswordProxy::PasswordProxy(AbstractFile* af, std::string str) {
-
+    protectedFile = af;
     password = str;
     vector <int> encryptedPassword;
 
@@ -25,19 +25,17 @@ PasswordProxy::PasswordProxy(AbstractFile* af, std::string str) {
         password += (std::to_string(encryptedPassword[i]) + " ");
 
     }
-
     cout << endl;
-
-
-    protectedFile = af;
 }
 
 PasswordProxy::~PasswordProxy() {
     delete protectedFile;
 }
 
-//prompt for a password using getline. This function is called whenever a user tries
-//to edit or display a password-protected file.
+/*
+ * Prompts the user for a password using getline. This function is called whenever a user tries to edit or display a
+ * password-protected file.
+ */
 string PasswordProxy::passwordPrompt() {
     string input;
     cout << "Enter the correct password" << endl;
@@ -46,33 +44,11 @@ string PasswordProxy::passwordPrompt() {
 
 }
 
-//helper function to encrypt each character (based on ASCII value)
-int PasswordProxy::encryptMod131 (int decryptedNumber) {
-    return twoToThe(decryptedNumber);
-}
 
-//helper function to decrypt each character (based on ASCII value)
-int PasswordProxy::decryptMod131 (int encryptedNumber) {
-    //to decrypt each character, we calculate the discrete logarithm for each encrypted ASCII value
-    for (int i = 0; i < 131; i++) {
-        if (twoToThe(i) == encryptedNumber) {
-            return i;
-        }
-    }
-}
-
-//helper function to compute the value of 2^exponent mod 131 (used for encryption and descryption)
-int PasswordProxy::twoToThe (int exponent) {
-    int mod131 = 1;
-    for (int i = 0; i < exponent; i++) {
-        mod131 *= 2;
-        mod131 %= 131;
-    }
-    return mod131;
-}
-
-//function to check if an entered password is correct (called when the user
-//tries to display or edit a password-protected file)
+/*
+ * The fuunction checks if the user entered password is correct (called when the user tries to display or edit a
+ * password-protected file)
+ */
 bool PasswordProxy::passwordCheck(string str){
     //we decode the password here.
     vector<int> decodedCharacters;
@@ -111,7 +87,7 @@ bool PasswordProxy::passwordCheck(string str){
 }
 
 
-//returns the contents of the file upon entering correct password
+//Returns the contents of the file upon entering correct password
 vector<char> PasswordProxy::read() {
     vector<char> pv;
     string inputPass = passwordPrompt();
@@ -121,7 +97,7 @@ vector<char> PasswordProxy::read() {
     return pv;
 }
 
-//writes to the file upon entering correct password
+//Writes to the file upon entering correct password
 int PasswordProxy::write(vector<char> pv){
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){
@@ -130,8 +106,8 @@ int PasswordProxy::write(vector<char> pv){
     return incorrectPassword;
 }
 
-//appends to the file upon entering correct password
 
+//Appends to the file upon entering correct password
 int PasswordProxy::append(vector<char> pv){
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){
@@ -140,12 +116,12 @@ int PasswordProxy::append(vector<char> pv){
     return passwordUnableToAppend;
 }
 
-//gets the size of the file
+//Gets the size of the file
 unsigned int PasswordProxy::getSize(){
     return protectedFile->getSize();
 }
 
-//gets the name of the file
+//Gets the name of the file
 string PasswordProxy::getName(){
     return protectedFile->getName();
 }
@@ -164,9 +140,36 @@ AbstractFile* PasswordProxy::clone (string fileName) {
     return newProxy;
 }
 
+
 void PasswordProxy::accept(AbstractFileVisitor* pafv){
     string inputPass = passwordPrompt();
     if(passwordCheck(inputPass)){
         protectedFile->accept(pafv);
+    }
+}
+
+
+//Helper function to encrypt each character (based on ASCII value)
+int PasswordProxy::encryptMod131 (int decryptedNumber) {
+    return twoToThe(decryptedNumber);
+}
+
+//Helper function to compute the value of 2^exponent mod 131 (used for encryption and descryption)
+int PasswordProxy::twoToThe (int exponent) {
+    int mod131 = 1;
+    for (int i = 0; i < exponent; i++) {
+        mod131 *= 2;
+        mod131 %= 131;
+    }
+    return mod131;
+}
+
+//Helper function to decrypt each character (based on ASCII value)
+int PasswordProxy::decryptMod131 (int encryptedNumber) {
+    //to decrypt each character, we calculate the discrete logarithm for each encrypted ASCII value
+    for (int i = 0; i < 131; i++) {
+        if (twoToThe(i) == encryptedNumber) {
+            return i;
+        }
     }
 }

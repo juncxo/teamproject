@@ -4,6 +4,9 @@
 #include "BasicDisplayVisitor.h"
 #include <string>
 
+/*
+ * Enumeration for DisplayCommand class
+ */
 enum DisplayErrors {
     DisplaySuccess,
     InvalidFileType,

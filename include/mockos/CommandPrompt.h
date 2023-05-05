@@ -5,12 +5,13 @@
 #include "AbstractFileSystem.h"
 #include "AbstractFileFactory.h"
 
+/*
+ * Enumeration for the CommandPrompt class
+ */
 enum command{
     commandSuccess,
     failedToInsert,
     userQuit,
-    commandDoesntExist,
-    commandFailed
 };
 
 class CommandPrompt{

@@ -32,33 +32,22 @@ void CatCommand::displayInfo () {
  * In both cases, the file is then closed. Returns catsuccess to indicate the file performed correctly.
  */
 int CatCommand::execute(std::string input) {
-    /*
-    int spaceIndex = 0;
-    for (int i = 0; i < input.length(); i++) {
-        if (input[i] == ' ') {
-            spaceIndex = i;
-            break;
-        }
-    }
-     */
-    //string fileName = input.substr(spaceIndex+1, input.npos);
     if (input.substr(input.size() - 3) == " -a") {
         string fileName = input.substr(0, input.size() - 3);
         AbstractFile* file = sfs->openFile(fileName);
         for (int i = 0; i < file->read().size(); i++) {
             cout << file->read()[i];
         }
-        //file->read();
         cout << endl;
+
         cout << "Enter new data into the file (enter :wq or :q to quit with or without saving, respectively). " <<endl;
         vector<string> savedInput;
         vector<char> savedCharInput;
         string userInput;
-        if(file->append(savedCharInput) != 0){
+        if(file->append(savedCharInput) != Catsuccess){
             return cannotAppend;
         }
         while (getline(cin, userInput)) {
-
             if (userInput == ":q") {
                 break;
             }
@@ -78,7 +67,6 @@ int CatCommand::execute(std::string input) {
             }
         }
         sfs->closeFile(file);
-
     }
     else {
         AbstractFile* file = sfs->openFile(input);

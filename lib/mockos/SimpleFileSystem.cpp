@@ -4,8 +4,11 @@
 #include "mockos/ImageFile.h"
 using namespace std;
 
+/*
+ * This function adds a file to the file system
+ */
 int SimpleFileSystem::addFile(string a, AbstractFile* p){
-    if (maps.count(a) != 0) {
+    if (maps.count(a) != SFSSuccess) {
         return fileExists;
     }
     if(p == NULL){
@@ -19,9 +22,11 @@ int SimpleFileSystem::addFile(string a, AbstractFile* p){
 }
 
 
-
+/*
+ * This function opens a existing file from the file system
+ */
 AbstractFile* SimpleFileSystem::openFile(string of){
-    if (maps.count(of) != 0) {
+    if (maps.count(of) != SFSSuccess) {
 
         if (sets.find(maps[of]) == sets.end()) {
             sets.insert (maps[of]);
@@ -32,7 +37,9 @@ AbstractFile* SimpleFileSystem::openFile(string of){
     return nullptr;
 }
 
-
+/*
+ * This function closes a file that was opened
+ */
 int SimpleFileSystem::closeFile(AbstractFile *cf) {
     if (sets.find(cf) != sets.end()) {
         sets.erase(cf);
@@ -41,9 +48,11 @@ int SimpleFileSystem::closeFile(AbstractFile *cf) {
     return fileNotOpen;
 }
 
-
+/*
+ * This function deletes an existing file from the file system
+ */
 int SimpleFileSystem::deleteFile(string df) {
-    if (maps.count(df) != 0) {
+    if (maps.count(df) != SFSSuccess) {
         if (sets.find(maps[df]) != sets.end()) {
             return fileIsOpen;
         }

@@ -49,19 +49,11 @@ void MacroCommand::addCommand (AbstractCommand* cmd) {
  * Function parses through the input to get the vector of strings to call execute on based on the commands
  */
 int MacroCommand::execute(std::string input) {
-    /*if (aps != nullptr) {
-        return MacroFail;
-    }*/
-
-    
-    //string inputWithoutTheCommand = input.substr(firstSpace+1, input.npos);
     vector <string> files = aps->parse(input);
-
     if (files.size() != commands.size()) {
         return sizeNotEqualFailure;
     }
     for (int i = 0; i < commands.size(); ++i) {
-
        int result = commands[i]->execute(files[i]);
        if(result != MacroSuccess){
            return MacroFail;

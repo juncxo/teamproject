@@ -3,6 +3,10 @@
 #include "AbstractCommand.h"
 #include <string>
 
+
+/*
+ * Enumeration for the LSCommand class
+ */
 enum LSErrors {
     LSsuccess, LSfail, unknownFileType
 };

@@ -43,13 +43,33 @@ in the way that the parameter's first word is the command itself followed by res
 we passed in "command " in our execute. This then helped the functions behave as it is supposed to.
 9. Implementing the additional macrocommand, the program kept failing. After running the debugger, we noticed that it was 
 due to EditDisplay::parse() returning a vector of one size while it needed to return 2 because it's supposed to call execute
-twice using that. So in the parse, we increased the size of the vector returned and the function behaved as desired.
+twice using that. So in the parse, we increased the size of the vector. We ran into more issues with this function when
+testing as we were not accounting for append for using the cat command. To account for this, we added additional statement 
+checking if the input included -a at the end. Then the command behaved as desired.  
 10. However, our previous logic for all the method was giving issues in the testing phase. So we had to go back to all 
 our methods to rework the logic for the inputs we were passing in. After reworking this, the run() function now passed in 
 the input after the command and not the whole input. 
+11. Our last error was in during rename command testing. We followed the issue back to macrocommand where we don't account 
+for if the execute being called fails or not. To fix this, we added a conditional statement to check if the execute 
+returned failure. If it did, we returned corresponding enum to end the run.
 
 
 Tests ran:
 As we built each of the commands, we called addcommand() to the new commands and ran it in clion. We created new objects 
 for each command. Then manually added initial 4 files with content in it. During testing, we created other files using touch
-and other commands. 
+and other commands. Then we entered each of the commands to make sure they behaved as desired. 
+Commands ran:
+touch test.txt
+cat hi.txt
+cat hi.txt -a
+ls
+cp hello.txt h
+ed hello.txt
+ed hello.txt -a
+ls -m
+rn hi.txt new
+rm image2.img
+ls -m
+ds new.txt
+ds image1.img
+ds image1.img -d

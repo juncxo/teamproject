@@ -3,9 +3,14 @@
 #include "AbstractCommand.h"
 #include <string>
 
+/*
+ * Enumeration for RemoveCommand class
+ */
 enum RemoveErrors {
     removeSuccess, unableToRemove
 };
+
+
 class RemoveCommand : public AbstractCommand{
 public:
     RemoveCommand(AbstractFileSystem*);

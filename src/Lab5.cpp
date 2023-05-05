@@ -3,7 +3,6 @@
 #include "mockos/AbstractFile.h"
 #include "mockos/SimpleFileSystem.h"
 #include "mockos/AbstractFileSystem.h"
-
 #include "mockos/SimpleFileFactory.h"
 #include "mockos/CommandPrompt.h"
 #include "mockos/LSCommand.h"
@@ -11,16 +10,10 @@
 #include "mockos/TouchCommand.h"
 #include "mockos/RenameParsingStrategy.h"
 #include "mockos/EditDisplay.h"
-
-
 #include "mockos/CatCommand.h"
 #include "mockos/DisplayCommand.h"
 #include "mockos/MacroCommand.h"
-
 #include "mockos/CopyCommand.h"
-
-
-
 #include <vector>
 #include <iostream>
 
@@ -69,10 +62,7 @@ int main (int argc, char * argv[]) {
 
     tf2->write(vc);
     image->write(imageContents);
-  //  sfs->openFile("hello.txt");
-    // sfs->openFile ("image1.img");
-  //  sfs->openFile ("image2.img");
-   // sfs->openFile ("hi.txt");
+
     cmd->setFileSystem(afs);
     cmd->addCommand("ls", ls);
     cmd->addCommand("ls -m", ls);
@@ -85,5 +75,5 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("ed", macro2);
 
     cmd->run();
-    return 0;
+    return commandSuccess;
 }

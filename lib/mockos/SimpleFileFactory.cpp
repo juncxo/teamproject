@@ -2,12 +2,11 @@
 #include "mockos/TextFile.h"
 #include "mockos/ImageFile.h"
 
-
 using namespace std;
 
 
 /*
- * the function creates a file based on the parameter passed by using the extension for the corresponding file type
+ * The function creates a file based on the parameter passed by using the extension for the corresponding file type
  */
 AbstractFile* SimpleFileFactory::createFile(string cf){
     int dotIndex;

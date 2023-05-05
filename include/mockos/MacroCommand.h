@@ -5,9 +5,14 @@
 #include <string>
 #include <vector>
 
+/*
+ * Enumeration for Macrocommand class
+ */
 enum MacroErrors {
     MacroSuccess, MacroFail, sizeNotEqualFailure
 };
+
+
 class MacroCommand : public AbstractCommand {
 public:
     MacroCommand(AbstractFileSystem*);
