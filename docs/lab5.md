@@ -48,3 +48,8 @@ twice using that. So in the parse, we increased the size of the vector returned 
 our methods to rework the logic for the inputs we were passing in. After reworking this, the run() function now passed in 
 the input after the command and not the whole input. 
 
+
+Tests ran:
+As we built each of the commands, we called addcommand() to the new commands and ran it in clion. We created new objects 
+for each command. Then manually added initial 4 files with content in it. During testing, we created other files using touch
+and other commands. 

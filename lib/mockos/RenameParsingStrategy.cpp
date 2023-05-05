@@ -24,7 +24,9 @@ std::vector<std::string> RenameParsingStrategy::parse (std::string fileNames) {
 
     string originalName = fileNames.substr(0, spaceIndex);
     string newName = fileNames.substr(spaceIndex + 1, fileNames.npos);
-    //AbstractFile* file = sfs->openFile(originalName);
+
+//    AbstractFile* file = sfs->openFile(originalName);
+//    if(file)
 
     returnedVector.push_back (fileNames);
     returnedVector.push_back (originalName);

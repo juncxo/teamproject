@@ -6,7 +6,7 @@
 using namespace std;
 
 /*
- * CopyCommand constructor to set the file system
+ * MacroCommand constructor to set the file system
  */
 MacroCommand::MacroCommand(AbstractFileSystem *parameter) {
     afs = parameter;
@@ -53,14 +53,7 @@ int MacroCommand::execute(std::string input) {
         return MacroFail;
     }*/
 
-
-    int firstSpace = 0;
-    for (int i = 0; i < input.length(); i++) {
-        if (input[i] == ' ') {
-            firstSpace = i;
-            break;
-        }
-    }
+    
     //string inputWithoutTheCommand = input.substr(firstSpace+1, input.npos);
     vector <string> files = aps->parse(input);
 
@@ -69,7 +62,10 @@ int MacroCommand::execute(std::string input) {
     }
     for (int i = 0; i < commands.size(); ++i) {
 
-       commands[i]->execute(files[i]);
+       int result = commands[i]->execute(files[i]);
+       if(result != MacroSuccess){
+           return MacroFail;
+       }
     }
     return MacroSuccess;
 }

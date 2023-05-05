@@ -22,6 +22,12 @@ void TouchCommand::displayInfo() {
 
 }
 
+
+/*
+ * The function creates a file using the user input. The file can either be created using password which invoked the
+ * passwordproxy which asks the user for further input and creating a passwordproxy object
+ * or simply create the file using createfile() function.
+ */
 int TouchCommand::execute(std::string fileName) {
     if (fileName.substr(fileName.size() - 3) == " -p") {
 

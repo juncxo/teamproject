@@ -49,8 +49,8 @@ int main (int argc, char * argv[]) {
     AbstractParsingStrategy* rn = new RenameParsingStrategy ();
     macro->setParseStrategy(rn);
 
-    AbstractParsingStrategy* cd = new EditDisplay ();
-    macro2->setParseStrategy (cd);
+    AbstractParsingStrategy* ed = new EditDisplay ();
+    macro2->setParseStrategy (ed);
 
 
     CommandPrompt* cmd = new CommandPrompt();
@@ -82,7 +82,7 @@ int main (int argc, char * argv[]) {
     cmd->addCommand("cp", cp);
     cmd->addCommand("touch", tc);
     cmd->addCommand("rn", macro);
-    cmd->addCommand("cd", macro2);
+    cmd->addCommand("ed", macro2);
 
     cmd->run();
     return 0;

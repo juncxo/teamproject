@@ -55,6 +55,10 @@ int SimpleFileSystem::deleteFile(string df) {
     return fileDoesNotExist;
 }
 
+
+/*
+ * The functions uses a for each loop to go through the map containing all the files of the system and returning a set
+ */
 std::set<std::string> SimpleFileSystem::getFileNames(){
     std::set<string> returnedSet;
 

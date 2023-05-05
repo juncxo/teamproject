@@ -4,6 +4,9 @@
 #include <iomanip>
 using namespace std;
 
+/*
+ * Displays information about a given text file passed in the parameter
+ */
 void MetadataDisplayVisitor::visit_TextFile(TextFile* tf) {
     cout << left << setw(20) << tf->getName();
     cout << left << setw(20) << "text";
@@ -11,6 +14,9 @@ void MetadataDisplayVisitor::visit_TextFile(TextFile* tf) {
 
 }
 
+/*
+ * Displays information about a given image file passed in the parameter
+ */
 void MetadataDisplayVisitor::visit_ImageFile(ImageFile* img){
     cout << setw(20) << img->getName();
     cout << setw(20) << "image";

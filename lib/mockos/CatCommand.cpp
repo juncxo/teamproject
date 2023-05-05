@@ -110,6 +110,5 @@ int CatCommand::execute(std::string input) {
         }
         sfs->closeFile(file);
     }
-
     return Catsuccess;
 }
