@@ -4,7 +4,7 @@
 #include <string>
 
 enum CopyErrors {
-    CopySuccess, InvalidFileExtension, failedToAddCopy
+    CopySuccess, InvalidFileExtension, failedToAddCopy, fileNonExist
 };
 class CopyCommand : public AbstractCommand {
 public:

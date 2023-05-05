@@ -5,6 +5,11 @@
 
 using namespace std;
 
+
+/*
+ * Function loops through the content of an image file
+ * Prints out the formatted version of the image file content
+ */
 void BasicDisplayVisitor::visit_ImageFile(ImageFile * image) {
     int imageSize = sqrt(image->getSize());
     vector<char> imgContent = image->read();
@@ -20,6 +25,11 @@ void BasicDisplayVisitor::visit_ImageFile(ImageFile * image) {
     cout << endl;
 }
 
+
+/*
+ * Function loops through the content of text file
+ * prints out each character of the content
+ */
 void BasicDisplayVisitor::visit_TextFile(TextFile * tf) {
     for (int i = 0; i < tf->read().size(); i++) {
         cout << tf->read()[i];

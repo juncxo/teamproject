@@ -5,26 +5,22 @@
 
 using namespace std;
 
-
+/*
+ * Constructor to set the file system
+ */
 DisplayCommand::DisplayCommand(AbstractFileSystem *parameter) {
     sfs = parameter;
 }
 
+
+/*
+ * Prints out the information about the ds command
+ */
 void DisplayCommand::displayInfo () {
     cout << "ds displays the file's contents, ds can be invoked by calling the command: ds" << endl;
 }
 
-int DisplayCommand::execute(std::string input) {
-   /*
-    int spaceIndex = 0;
-    for (int i = 0; i < input.length(); i++) {
-        if (input[i] == ' ') {
-            spaceIndex = i;
-            break;
-        }
-    }
-    */
-    string fileName = input; //.substr(spaceIndex+1, input.npos);
+int DisplayCommand::execute(std::string fileName) {
     if (fileName.substr(fileName.size() - 3) == " -d") {
         string fileNameWithoutTheDashD = fileName.substr(0, fileName.size() - 3);
         AbstractFile* file = sfs->openFile(fileNameWithoutTheDashD);
@@ -37,7 +33,9 @@ int DisplayCommand::execute(std::string input) {
     }
     else {
         AbstractFile* file = sfs->openFile(fileName);
-
+        if(file == nullptr){
+            return fileNull;
+        }
         /*
         int dotIndex = 0;
         for (int i = 0; i < fileName.length(); i++) {

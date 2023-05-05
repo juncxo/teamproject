@@ -46,6 +46,10 @@ vector<char> ImageFile::read () {
     return imageContents;
 }
 
+
+/*
+ * Clones the file passed in the parameter, add the extension of the file, sets the file's content to match source file's
+ */
 AbstractFile* ImageFile::clone (string fileName) {
     ImageFile* newFile =  new ImageFile(*this);
     newFile->imageName = fileName + ".img";

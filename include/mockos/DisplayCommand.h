@@ -5,7 +5,9 @@
 #include <string>
 
 enum DisplayErrors {
-    DisplaySuccess, InvalidFileType
+    DisplaySuccess,
+    InvalidFileType,
+    fileNull
 };
 class DisplayCommand : public AbstractCommand {
 public:

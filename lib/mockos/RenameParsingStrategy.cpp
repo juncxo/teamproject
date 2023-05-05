@@ -18,12 +18,13 @@ std::vector<std::string> RenameParsingStrategy::parse (std::string fileNames) {
             break;
         }
     }
-    if(spaceIndex == 0){
-        return returnedVector;
-    }
+//    if(spaceIndex == 0){
+//        return returnedVector;
+//    }
 
     string originalName = fileNames.substr(0, spaceIndex);
     string newName = fileNames.substr(spaceIndex + 1, fileNames.npos);
+    //AbstractFile* file = sfs->openFile(originalName);
 
     returnedVector.push_back (fileNames);
     returnedVector.push_back (originalName);

@@ -13,6 +13,5 @@ public:
     virtual void displayInfo() override;
 private:
     int longestFileName;
-    int longestFileType;
     AbstractFileSystem* sfs;
 };

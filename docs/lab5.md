@@ -7,11 +7,12 @@ Work Distribution:
 Studio: Documentation writing split between Aranna and Andy. Debugging and multiple office hours attended by Aranna. 
 Studio 16 typing by Andy. Rest of the typing was split between the 3 of us, taking turns in each of the studios working
 on Aranna's computer, although Luke did a good amount of the typing. 
+
 Lab: First half of the lab, Aranna and Luke focused on typing the code. Second half, Andy and Luke focused on typing. 
 Although not everyone was able to be around the whole time, whole group met everyday to work, including office hours.
-Andy spent most amount of time at office hours. Documentation and editing files was done by Aranna. A significant amount 
-of the solutions ideas for the problems was proposed by Luke. There isn't a specific method or file that anyone specifically
-did alone. 
+Andy spent most amount of time at office hours. Documentation, comments and debugging test/lab5.cpp was done by Aranna.
+A significant amount of the solutions ideas for the problems was proposed by Luke. There isn't a specific method or file
+that anyone specifically did alone. 
 
 Bugs:
 1. We had confusion on how to implement the LSCommand::execute() function because we didn't know how to account for the 

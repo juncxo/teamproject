@@ -4,7 +4,10 @@
 #include <string>
 
 enum CatErrors {
-    Catsuccess, Catfail
+    Catsuccess,
+    Catfail,
+    cannotAppend,
+    fileNoExist
 };
 class CatCommand : public AbstractCommand {
 public:

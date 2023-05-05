@@ -5,20 +5,30 @@
 #include <sstream>
 using namespace std;
 
-
+/*
+ * CopyCommand constructor to set the file system
+ */
 MacroCommand::MacroCommand(AbstractFileSystem *parameter) {
     afs = parameter;
     aps = nullptr;
 
 }
+
+
 void MacroCommand::setParseStrategy(AbstractParsingStrategy* str) {
     aps = str;
 }
 
+/*
+ * Prints out the info on how macro works
+ */
 void MacroCommand::displayInfo () {
     cout << "macro commmands executes several commands in order, it is invoked by typing in a sequence of commands." << endl;
 }
 
+/*
+ * Destructor for macrocommand to delete the commands added to the vector
+ */
 MacroCommand::~MacroCommand() {
     for (int i = 0; i < commands.size(); i++) {
         delete commands[i];
@@ -26,47 +36,24 @@ MacroCommand::~MacroCommand() {
     delete aps;
 }
 
+
+/*
+ * Adding commands to the vector of commands to act as the instraction for which commands it will run
+ */
 void MacroCommand::addCommand (AbstractCommand* cmd) {
     commands.push_back(cmd);
 }
 
+
 /*
-
-std::vector<std::string> AbstractParsingStrategy::parse (std::string str) {
-    vector <string> returnedVector;
-    int numberOfWords = 1;
-    for (int i = 0; i < str.length(); i++) {
-        if (str[i] == ' ') {
-            numberOfWords++;
-        }
-    }
-    istringstream iss (str);
-    for (int i = 0; i < numberOfWords; i++) {
-        string vectorValue;
-        iss >> vectorValue;
-        returnedVector.push_back (vectorValue);
-    }
-    return returnedVector;
-}
-
-*/
-
+ * Function parses through the input to get the vector of strings to call execute on based on the commands
+ */
 int MacroCommand::execute(std::string input) {
     /*if (aps != nullptr) {
         return MacroFail;
     }*/
 
-/*
-    int finalSpaceIndex = 0;
-    for (int i = 0; i < input.length(); i++) {
-        if (input[i] == ' ') {
-            finalSpaceIndex = i;
-        }
-    }
 
-    string inputWithoutTheFileName = input.substr(0, finalSpaceIndex-1);
-    string fileName = input.substr(finalSpaceIndex+1, input.npos);
-*/
     int firstSpace = 0;
     for (int i = 0; i < input.length(); i++) {
         if (input[i] == ' ') {
@@ -75,14 +62,14 @@ int MacroCommand::execute(std::string input) {
         }
     }
     //string inputWithoutTheCommand = input.substr(firstSpace+1, input.npos);
-    vector <string> listOfCommands = aps->parse(input);
+    vector <string> files = aps->parse(input);
 
-    if (listOfCommands.size() != commands.size()) {
+    if (files.size() != commands.size()) {
         return sizeNotEqualFailure;
     }
     for (int i = 0; i < commands.size(); ++i) {
 
-       commands[i]->execute(listOfCommands[i]);
+       commands[i]->execute(files[i]);
     }
     return MacroSuccess;
 }
