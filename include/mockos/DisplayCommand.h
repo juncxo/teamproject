@@ -7,7 +7,8 @@
 enum DisplayErrors {
     DisplaySuccess,
     InvalidFileType,
-    fileNull
+    fileNull,
+    invalidFileName
 };
 class DisplayCommand : public AbstractCommand {
 public:
