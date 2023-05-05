@@ -40,7 +40,7 @@ PasswordProxy::~PasswordProxy() {
 //to edit or display a password-protected file.
 string PasswordProxy::passwordPrompt() {
     string input;
-    cout << "Enter a password" << endl;
+    cout << "Enter the correct password" << endl;
     getline(cin, input);
     return input;
 
@@ -106,6 +106,7 @@ bool PasswordProxy::passwordCheck(string str){
     if(str == decodedPassword){
         return true;
     }
+    cout << "Wrong password" << endl;
     return false;
 }
 
