@@ -1,0 +1,30 @@
+**********************************************
+Studios 16-21:
+Grade: 100/100
+
+Late deduction (Due by 11:59 PM on 5/10, -10 if submitted on 5/11, -20 if submitted on 5/12), 0 if submitted anytime after 5/12: 
+
+Lab 5:
+Grade: 96/100
+LS: 15/15
+RM: 5/5
+Touch: 8/10
+-2 memory leaks- new file and proxy leaked if they cannot be added to the file system
+Cat: 15/15
+DS: 10/10
+Copy: 15/15
+Used prototype pattern: y
+Macro + rename: 15/15
+Used composite pattern: y
+Additional MacroCommand: 5/5
+Main + readme: 5/10
+-2 compilation error in grading environment, missing include<string>
+-3 memory leaks - many objects allocated dynamically but not destroyed
+Extra credit: 3/5
+
+
+*********************************************
+﻿H:\cse332\scripts\Lab5Grading\StudentRepos\oop-work-aranna_andy_luke_16-21
+library build failed
+
+missign include of string in a file - built after including it and test successful

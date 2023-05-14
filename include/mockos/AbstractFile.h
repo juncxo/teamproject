@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "AbstractFileVisitor.h"
+#include<string>
 
 
 
